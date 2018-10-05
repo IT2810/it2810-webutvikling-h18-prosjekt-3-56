@@ -15,24 +15,39 @@ import Swipeout from 'react-native-swipeout';
 let swipeoutBtns = [
   {
     text:'Done',
-    backgroundColor: "#00ff00"
+    backgroundColor: "#2ecc71"
     //onPress = function to change state, task has been completed
   }
 ]
 export default class LinksScreen extends React.Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+      taskList : [{id: 0, text:"Refill lifejuice"}, {id: 1, text: "Smirk to stranger"}]
+    };
+  }
+
+
   static navigationOptions = {
-    title: 'Todude',
+    title: 'ToDude',
   };
+
+
 
 
   render() {
     return (
-      <ScrollView style={styles.container} backgroundColor = "transparent">
-        {/* Go ahead and delete ExpoLinksView and replace it with your
-           * content, we just wanted to provide you with some helpful links */}
-        <Swipeout right = {swipeoutBtns}>
-          <Task text = "Buggydi Woop"/>
-        </Swipeout>
+      <ScrollView style={styles.container}>
+        {
+          this.state.taskList.map((task) => {
+            return(
+            <Swipeout style = {styles.margin} key = {task.id} right = {swipeoutBtns}>
+              <Task id = {task.id} text = {task.text}/>
+            </Swipeout>)
+          })
+        }
+
       </ScrollView>
     );
   }
@@ -41,7 +56,9 @@ export default class LinksScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 15,
-    backgroundColor: '#fff',
+    backgroundColor: '#34495e',
   },
+  margin:{
+    marginBottom:5
+  }
 });

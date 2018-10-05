@@ -14,7 +14,8 @@ export default class Task extends Component {
 
 const styles = StyleSheet.create({
   container:{
-    height: 'auto'
+    height: 'auto',
+    backgroundColor:'#3498db'
   },
   font:{
     fontSize: 30
