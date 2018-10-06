@@ -1,6 +1,6 @@
 import React from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
-import { AppLoading, Asset, Font, Icon } from 'expo';
+import { AppLoading, Asset } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
 
 export default class App extends React.Component {
@@ -27,7 +27,7 @@ export default class App extends React.Component {
     }
   }
 
-  _loadResourcesAsync = async () => {  // Burde vi implementere Async-storage her?
+  _loadResourcesAsync = async () => {  // Burde vi implementere Async-storage her? Under er eksempel bruk
     /*const asset = [
       require('./assets/asset1.type'),
       require('./assets/asset2.type'),
