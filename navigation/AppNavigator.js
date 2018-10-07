@@ -4,7 +4,7 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
+import TodoScreen from '../screens/TodoScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
 // ES6 syntax: { HomeScreen } is the same as { HomeScreen: HomeScreen}.
@@ -26,10 +26,10 @@ HomeStack.navigationOptions = {
   ),
 };
 
-const LinksStack = createStackNavigator({ LinksScreen });
+const TodoStack = createStackNavigator({ TodoScreen });
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+TodoStack.navigationOptions = {
+  tabBarLabel: 'ToDude',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -50,11 +50,11 @@ SettingsStack.navigationOptions = {
   ),
 };
 
-/* Acts the same way as stackNavigator, but with the inclusion of a Tabbar 
+/* Acts the same way as stackNavigator, but with the inclusion of a Tabbar
 that automticly implements navigation between routes (screens)*/
 export default createBottomTabNavigator({
   HomeStack,  // The different routes
-  LinksStack,
+  TodoStack,
   SettingsStack,
 });
 // Does it have to be a Stack-component? Or could it be an ordinary component, like Homescreen?
