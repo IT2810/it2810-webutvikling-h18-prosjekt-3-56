@@ -14,23 +14,17 @@ import Swipeout from 'react-native-swipeout';
 
 import AddTask from '../components/AddTask.js'
 
-let swipeoutBtns = [
-  {
-    text:'Done',
-    backgroundColor: "#2ecc71"
-    //onPress = function to change state, task has been completed
-  }
-]
+
 export default class LinksScreen extends React.Component {
 
   constructor(props){
     super(props);
     this.state = {
-      taskList : [{id:0, text:"Refill lifejuice"}, {id: 1, text: "Smirk to stranger"}]
+      taskList : [{id:0, text:"Refill lifejuic3"}, {id: 1, text: "Smirk to stranger"}]
     };
     this.addTaskClicked = this.addTaskClicked.bind(this);
+    this.doneClicked = this.doneClicked.bind(this)
   }
-
 
   static navigationOptions = {
     title: 'ToDude',
@@ -43,11 +37,9 @@ export default class LinksScreen extends React.Component {
         <ScrollView style={styles.scroller}>
           {
             this.state.taskList.map((task) => {
-              console.log("hei");
               return(
-              <Swipeout key = {task.id} style = {styles.margin} right = {swipeoutBtns}>
-                <Task text = {task.text}/>
-              </Swipeout>)
+                <Task key = {task.id} text = {task.text} id = {task.id} click = {this.doneClicked}/>
+              )
             })
           }
         </ScrollView>
@@ -55,13 +47,38 @@ export default class LinksScreen extends React.Component {
     );
   }
 
-  addTaskClicked(tex){
-    console.log("Clicku");
-    this.setState((prevState) => ({
-      taskList: [...prevState.taskList, {id: prevState.taskList.length -1, text: tex}]
-    }))
-    console.log(this.state.taskList);
+  //Finds the element in the list and removes it from the taskList in state
+  doneClicked(id){
+    this.setState((prev) => {
+      for(let i = 0; i < prev.taskList.length; i++){
+        console.log(prev.taskList[i]);
+        if (prev.taskList[i].id == id){
+          prev.taskList.splice(i,1);
+          array = prev.taskList;
+          return {taskList: array};
+        }
+        else{
+          console.log("If this prints, you have problem");
+        }
+      }
 
+    }
+    );
+  }
+
+  //Adds new task. The id will become id of last element +1 unless the lists length is 0
+  addTaskClicked(tex){
+    this.setState((prevState) =>
+      {
+        if (prevState.taskList.length!= 0){
+          id = prevState.taskList[prevState.taskList.length -1].id + 1;
+          console.log(id);
+          return {taskList: [...prevState.taskList, {id: id, text: tex}]}
+        }
+        else{
+          return {taskList: [...prevState.taskList, {id: 0, text: tex}]}
+        }
+    })
   }
 }
 
@@ -74,8 +91,5 @@ const styles = StyleSheet.create({
 
   },
   scroller: {
-  },
-  margin:{
-    marginBottom:5
   }
 });
