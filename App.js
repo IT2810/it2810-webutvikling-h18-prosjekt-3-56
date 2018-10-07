@@ -35,7 +35,6 @@ export default class App extends React.Component {
 
     const cacheAssets = Assets.map(asset => asset.fromModule(asset).downloadAsync());
     return Promise.all(cacheAssets) */
-    console.log(Asset.fromModule(require('./assets/images/icon.png')).downloadAsync().uri);
   };
 
   _handleLoadingError = error => {  // Called if the startAsync-prop returns an error
