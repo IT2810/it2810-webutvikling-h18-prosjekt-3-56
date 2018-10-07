@@ -7,10 +7,10 @@ import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
-const HomeStack = createStackNavigator({
-  Home: HomeScreen,
-});
+// ES6 syntax: { HomeScreen } is the same as { HomeScreen: HomeScreen}.
+const HomeStack = createStackNavigator({ HomeScreen });
 
+// Recall: HomeStack becomes the screen that Tabnavigator renders. Tab items must therefore be visible for TabNavigator
 HomeStack.navigationOptions = {
   tabBarLabel: 'Home',
   tabBarIcon: ({ focused }) => (
@@ -25,9 +25,7 @@ HomeStack.navigationOptions = {
   ),
 };
 
-const LinksStack = createStackNavigator({
-  Links: LinksScreen,
-});
+const LinksStack = createStackNavigator({ LinksScreen });
 
 LinksStack.navigationOptions = {
   tabBarLabel: 'Links',
@@ -39,9 +37,7 @@ LinksStack.navigationOptions = {
   ),
 };
 
-const SettingsStack = createStackNavigator({
-  Settings: SettingsScreen,
-});
+const SettingsStack = createStackNavigator({ SettingsScreen });
 
 SettingsStack.navigationOptions = {
   tabBarLabel: 'Settings',
