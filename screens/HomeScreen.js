@@ -2,8 +2,8 @@ import React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 
 export default class HomeScreen extends React.Component {
-  static navigationOptions = {
-    header: null,
+  static navigationOptions = {  // Defines options 
+    title: 'Home'
   };
 
   render() {

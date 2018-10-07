@@ -43,7 +43,7 @@ export default class App extends React.Component {
     
   };
 
-  _handleFinishLoading = () => {  // Called after onError and startAsync
+  _handleFinishLoading = () => {  // Called after promise is resolved from _loadResourceAsync
     this.setState({ isLoadingComplete: true });
   };
 }
