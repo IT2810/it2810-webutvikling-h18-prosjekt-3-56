@@ -16,6 +16,7 @@ HomeStack.navigationOptions = {
   tabBarLabel: 'Home',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
+      import = 'Ionicons'
       focused={focused}
       name={
         Platform.OS === 'ios'
@@ -32,6 +33,7 @@ TodoStack.navigationOptions = {
   tabBarLabel: 'ToDude',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
+      import = 'Ionicons'
       focused={focused}
       name={Platform.OS === 'ios' ? `ios-link${focused ? '' : '-outline'}` : 'md-link'}
     />
@@ -44,10 +46,11 @@ SettingsStack.navigationOptions = {
   tabBarLabel: 'Settings',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
+      import = 'Ionicons'
       focused={focused}
       name={Platform.OS === 'ios' ? `ios-options${focused ? '' : '-outline'}` : 'md-options'}
     />
-  ),
+  )
 };
 
 /* Acts the same way as stackNavigator, but with the inclusion of a Tabbar
