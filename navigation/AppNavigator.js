@@ -50,7 +50,7 @@ SettingsStack.navigationOptions = {
       focused={focused}
       name={Platform.OS === 'ios' ? `ios-options${focused ? '' : '-outline'}` : 'md-options'}
     />
-  ),
+  )
 };
 
 /* Acts the same way as stackNavigator, but with the inclusion of a Tabbar
