@@ -7,12 +7,13 @@ import {
   Text,
   TouchableOpacity,
   View,
-} from 'react-native';
+  AsyncStorage} from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
 import Task from '../components/Task.js'
 import Swipeout from 'react-native-swipeout';
 
 import AddTask from '../components/AddTask.js'
+
 
 
 export default class TodoScreen extends React.Component {
@@ -47,7 +48,7 @@ export default class TodoScreen extends React.Component {
     );
   }
 
-  //Finds the element in the list and removes it from the taskList in state
+  //Finds the element in the ltruetrueist and removes it from the taskList in state
   doneClicked(id){
     this.setState((prev) => {
       for(let i = 0; i < prev.taskList.length; i++){
@@ -78,7 +79,18 @@ export default class TodoScreen extends React.Component {
         else{
           return {taskList: [...prevState.taskList, {id: 0, text: tex}]}
         }
-    })
+    }, () => {
+      this.storeData(this.state);
+    }
+  )}
+
+  storeData = async(data) =>{
+    try {
+      await AsyncStorage.setItem('tasks', JSON.stringify(data));
+    } catch (error) {
+    // Error saving data
+      console.log(error);
+    }
   }
 }
 

@@ -1,11 +1,14 @@
 import React from 'react';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
+import { Platform, StatusBar, StyleSheet, View, AsyncStorage } from 'react-native';
 import { AppLoading, Asset } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
 
 export default class App extends React.Component {
   state = {
     isLoadingComplete: false,
+  };
+  tasks = {
+    tasks: null
   };
 
   render() {
@@ -21,7 +24,7 @@ export default class App extends React.Component {
       return (
         <View style={styles.container}>
           {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-          <AppNavigator />
+          <AppNavigator tasks = {this.tasks} />
         </View>
       );
     }
@@ -35,11 +38,29 @@ export default class App extends React.Component {
 
     const cacheAssets = Assets.map(asset => asset.fromModule(asset).downloadAsync());
     return Promise.all(cacheAssets) */
+    console.log("Hei");
+    try {
+      const value = await AsyncStorage.getItem('tasks');
+      if (value !== null) {
+        // We have data!!
+        console.log(value);
+        tasks = {
+          tasks:value
+        };
+      }
+      else if (value === null) {
+        console.log("There was no data stored");
+      }
+    } catch (error) {
+      console.log(error);
+      // Error retrieving data
+      return error;
+    }
   };
 
   _handleLoadingError = error => {  // Called if the startAsync-prop returns an error
     console.warn(error);
-    
+
   };
 
   _handleFinishLoading = () => {  // Called after promise is resolved from _loadResourceAsync
