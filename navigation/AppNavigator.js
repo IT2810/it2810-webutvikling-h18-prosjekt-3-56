@@ -16,12 +16,12 @@ HomeStack.navigationOptions = {
   tabBarLabel: 'Home',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
-      import = 'Ionicons'
+      type = 'Ionicons'
       focused={focused}
       name={
         Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
+          ? `ios-home`
+          : 'md-home'
       }
     />
   ),
@@ -33,9 +33,9 @@ TodoStack.navigationOptions = {
   tabBarLabel: 'ToDude',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
-      import = 'Ionicons'
+      type = 'FontAwesome'
       focused={focused}
-      name={Platform.OS === 'ios' ? `ios-link${focused ? '' : '-outline'}` : 'md-link'}
+      name={'tasks'}
     />
   ),
 };
@@ -46,7 +46,7 @@ SettingsStack.navigationOptions = {
   tabBarLabel: 'Settings',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
-      import = 'Ionicons'
+      type = 'Ionicons'
       focused={focused}
       name={Platform.OS === 'ios' ? `ios-options${focused ? '' : '-outline'}` : 'md-options'}
     />
