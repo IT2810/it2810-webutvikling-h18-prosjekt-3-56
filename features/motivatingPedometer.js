@@ -62,23 +62,22 @@ export default class motivatingPedometer extends Component{
 	render(){
 		return (
 			<View style={styles.container}>
-				<Text>Walk! And watch this go up: {this.state.currentStepCount}</Text>
-				<ProgressCircle
+				<View> 
+					<ProgressCircle
 					style={ { height: 200 } }
 					progress={ 0.7 }
 					progressColor={'rgb(134, 65, 244)'}
-				/>
-		  </View>
+					/> 
+				</View>
+					<Text>Steps so far: {this.state.currentStepCount}</Text>
+			</View>
 		);
 	};
 };
 	
 const styles = StyleSheet.create({
 	container: {
-		flex: 1,
-		marginTop: 15,
-		alignItems: "center",
-		justifyContent: "center"
+		
 	}
 });
 
