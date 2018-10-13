@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 import {Pedometer} from 'expo';
 import { ProgressCircle }  from 'react-native-svg-charts'
+import {Foundation} from '@expo/vector-icons';
 
 export default class motivatingPedometer extends Component{
 	/* Denne komponenten setter sammen statusbar, foot-icon,
@@ -62,14 +63,21 @@ export default class motivatingPedometer extends Component{
 	render(){
 		return (
 			<View style={styles.container}>
-				<View> 
+				<View style={styles.circleContainer}> 
 					<ProgressCircle
 					style={ { height: 200 } }
 					progress={ 0.7 }
 					progressColor={'rgb(134, 65, 244)'}
 					/> 
 				</View>
-					<Text>Steps so far: {this.state.currentStepCount}</Text>
+				<View style={styles.overlapper}>
+					<View style={styles.inner}>
+						<Foundation name = 'foot' />
+					</View>
+					<View style={styles.inner}>
+						<Text>Steps so far: {this.state.currentStepCount}</Text>
+					</View>
+				</View>
 			</View>
 		);
 	};
@@ -77,13 +85,29 @@ export default class motivatingPedometer extends Component{
 	
 const styles = StyleSheet.create({
 	container: {
-		
+		borderWidth: 1,
+		borderColor: "black",
+		justifyContent: "center"
+	},
+	circleContainer: {
+		marginHorizontal: 20,
+		borderWidth: 1,
+		borderColor: "black"
+	},
+	overlapper: {
+		borderWidth: 1,
+		borderColor: "black",
+		flexDirection: "row",
+		justifyContent: "center",
+		position: "absolute",
+		zIndex: 1,
+		width: "100%"
+	},
+	inner: {
+		marginHorizontal: 8,
+		borderWidth: 1,
+		borderColor: "black",
+		height: 75,
+		width: 75
 	}
 });
-
-/*		    <Text>
-			 Pedometer.isAvailableAsync(): {this.state.isPedometerAvailable}
-		    </Text>
-		    <Text>
-			 Steps taken in the last 24 hours: {this.state.pastStepCount}
-		    </Text>*/
