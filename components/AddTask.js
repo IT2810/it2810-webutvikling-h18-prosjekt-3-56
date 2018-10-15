@@ -14,7 +14,7 @@ export default class AddTask extends Component {
       <TouchableOpacity onPress ={() => {this.props.click(this.state.text)}}>
         <View style = {styles.container}>
           <TextInput style = {styles.input} placeHolder = "The road to success is action." onChangeText = {(text) => this.setState({text})}/>
-          <Text style = {styles.button}>Add Task</Text>
+          <Text style = {styles.button}>ADD</Text>
         </View>
       </TouchableOpacity>
     );
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   container:{
     display:'flex',
     flexDirection:'row',
-    backgroundColor:'green'
+    backgroundColor:'#f1c40f'
   },
   input:{
     height:50,
@@ -35,8 +35,8 @@ const styles = StyleSheet.create({
   button:{
     height:50,
     flex:0.2,
-    backgroundColor:'red',
-    fontSize: 15,
+    backgroundColor:'#f39c12',
+    fontSize: 17,
     textAlign:'center',
     paddingTop:14,
     paddingBottom:14
