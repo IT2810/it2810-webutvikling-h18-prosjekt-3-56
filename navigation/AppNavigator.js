@@ -27,8 +27,7 @@ HomeStack.navigationOptions = {
   ),
 };
 
-const TodoStack = createStackNavigator({ TodoScreen });
-
+const TodoStack = createStackNavigator({TodoScreen});
 TodoStack.navigationOptions = {
   tabBarLabel: 'ToDude',
   tabBarIcon: ({ focused }) => (

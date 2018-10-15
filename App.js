@@ -7,9 +7,6 @@ export default class App extends React.Component {
   state = {
     isLoadingComplete: false,
   };
-  tasks = {
-    tasks: null
-  };
 
   render() {
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
@@ -24,7 +21,7 @@ export default class App extends React.Component {
       return (
         <View style={styles.container}>
           {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-          <AppNavigator tasks = {this.tasks} />
+          <AppNavigator/>
         </View>
       );
     }
@@ -35,27 +32,8 @@ export default class App extends React.Component {
       require('./assets/asset1.type'),
       require('./assets/asset2.type'),
     ];
-
     const cacheAssets = Assets.map(asset => asset.fromModule(asset).downloadAsync());
     return Promise.all(cacheAssets) */
-    console.log("Hei");
-    try {
-      const value = await AsyncStorage.getItem('tasks');
-      if (value !== null) {
-        // We have data!!
-        console.log(value);
-        tasks = {
-          tasks:value
-        };
-      }
-      else if (value === null) {
-        console.log("There was no data stored");
-      }
-    } catch (error) {
-      console.log(error);
-      // Error retrieving data
-      return error;
-    }
   };
 
   _handleLoadingError = error => {  // Called if the startAsync-prop returns an error

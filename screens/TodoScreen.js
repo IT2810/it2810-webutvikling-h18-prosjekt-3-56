@@ -18,11 +18,15 @@ import AddTask from '../components/AddTask.js'
 
 export default class TodoScreen extends React.Component {
 
+  //
   constructor(props){
     super(props);
-    this.state = {
-      taskList : [{id:0, text:"Refill lifejuic3"}, {id: 1, text: "Smirk to stranger"}]
-    };
+    this.state= {
+      taskList: []
+    }
+    //has the initial data read been executed?
+    this.dataRead = false;
+
     this.addTaskClicked = this.addTaskClicked.bind(this);
     this.doneClicked = this.doneClicked.bind(this)
   }
@@ -48,6 +52,16 @@ export default class TodoScreen extends React.Component {
     );
   }
 
+  componentDidMount(){
+    console.log("2");
+    if(this.dataRead){
+
+    }
+    else{
+      this.initData();
+      console.log("as");
+    }
+  }
   //Finds the element in the ltruetrueist and removes it from the taskList in state
   doneClicked(id){
     this.setState((prev) => {
@@ -81,8 +95,32 @@ export default class TodoScreen extends React.Component {
         }
     }, () => {
       this.storeData(this.state);
+      
     }
   )}
+
+  //Reads all data in db with key "tasks" and sets the variable dataRead = true
+  initData = async() =>{
+    try {
+      const value = await AsyncStorage.getItem('tasks');
+      if (value !== null) {
+        // We have data!!
+        tasks = JSON.parse(value);
+        console.log(tasks.taskList);
+        this.setState(tasks);
+        return tasks.taskList;
+      }
+      else if (value === null) {
+        console.log("There was no data stored");
+        return {tasks:[]};
+      }
+      this.dataRead = true;
+    } catch (error) {
+      console.log(error);
+      // Error retrieving data
+      return error;
+    }
+  }
 
   storeData = async(data) =>{
     try {
