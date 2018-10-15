@@ -95,7 +95,7 @@ export default class TodoScreen extends React.Component {
         }
     }, () => {
       this.storeData(this.state);
-      
+
     }
   )}
 
@@ -135,7 +135,7 @@ export default class TodoScreen extends React.Component {
 const styles = StyleSheet.create({
   container:{
     flex:1,
-    backgroundColor: '#34495e',
+    backgroundColor: '#ecf0f1',
   },
   taskAdder:{
 

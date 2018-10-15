@@ -33,12 +33,14 @@ export default class Task extends Component {
 const styles = StyleSheet.create({
   container:{
     height: 'auto',
-    backgroundColor:'#3498db'
+    backgroundColor:'white'
   },
   font:{
-    fontSize: 30
+    fontSize: 25,
+    fontFamily: "Roboto",
+    padding:3
   },
   margin:{
-    marginBottom:5
+    marginBottom:1
   }
 })
