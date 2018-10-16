@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
+import { Platform, StatusBar, StyleSheet, View, AsyncStorage } from 'react-native';
 import { AppLoading, Asset } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
 
@@ -21,7 +21,7 @@ export default class App extends React.Component {
       return (
         <View style={styles.container}>
           {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-          <AppNavigator />
+          <AppNavigator/>
         </View>
       );
     }
@@ -32,14 +32,13 @@ export default class App extends React.Component {
       require('./assets/asset1.type'),
       require('./assets/asset2.type'),
     ];
-
     const cacheAssets = Assets.map(asset => asset.fromModule(asset).downloadAsync());
     return Promise.all(cacheAssets) */
   };
 
   _handleLoadingError = error => {  // Called if the startAsync-prop returns an error
     console.warn(error);
-    
+
   };
 
   _handleFinishLoading = () => {  // Called after promise is resolved from _loadResourceAsync
