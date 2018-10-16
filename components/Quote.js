@@ -8,7 +8,7 @@ export default class Quote extends Component {
   }
   render() {
     return (
-      <Text>"Quoti quote"</Text>
+      <Text>Inspiration time: </Text>
     );
   }
 }
