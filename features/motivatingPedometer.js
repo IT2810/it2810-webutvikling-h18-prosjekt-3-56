@@ -62,10 +62,6 @@ export default class motivatingPedometer extends Component{
 	validateInput = text => {
 		isNaN(text) ? Alert.alert("Error", "Please type a number") : this.setState({stepGoal: text})
 	};
-
-	isGoalReached = () => {
-		
-	}
 	
 	render(){
 		console.log(this.state.stepGoal);
