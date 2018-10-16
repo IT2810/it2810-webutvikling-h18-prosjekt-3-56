@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import {Text, View, StyleSheet, TextInput, Alert} from 'react-native';
 import {Pedometer} from 'expo';
 import { ProgressCircle }  from 'react-native-svg-charts'
 import {Foundation} from '@expo/vector-icons';
@@ -8,9 +8,10 @@ export default class motivatingPedometer extends Component{
 	/* Denne komponenten setter sammen statusbar, foot-icon,
 	implementer aksess til accelerometer og styler det */
 	state = {
+		stepGoal: 1000,
 		isPedometerAvailable: "checking",
 		pastStepCount: 0,
-		currentStepCount: 0
+		currentStepCount: 100,
 	};
 
 	componentDidMount() {
@@ -27,7 +28,7 @@ export default class motivatingPedometer extends Component{
 				currentStepCount: result.steps
 			});
 		});
-		/*Pedometer.isAvailableAsync().then(
+		Pedometer.isAvailableAsync().then(
 			result => {
 				this.setState({
 					isPedometerAvailable: String(result)
@@ -38,8 +39,7 @@ export default class motivatingPedometer extends Component{
 					isPedometerAvailable: "Could not get isPedometerAvailable: " + error
 				});
 			}
-		);
-	
+		); /*
 		const end = new Date();
 		const start = new Date();
 		start.setDate(end.getDate() - 1);
@@ -52,30 +52,41 @@ export default class motivatingPedometer extends Component{
 					 pastStepCount: "Could not get stepCount: " + error
 				});
 			}
-		);*/
+		); */
 	}; 
 	
 	_unsubscribe = () => {
 		this._subscription && this._subscription.remove();
 		this._subscription = null;
 	}
+
+	validateInput = text => {
+		isNaN(text) ? Alert.alert("Error", "Please type a number") : this.setState({stepGoal: text})
+	};
 	
 	render(){
+		console.log(this.state.stepGoal);
 		return (
 			<View style={styles.container}>
 				<View style={styles.circleContainer}> 
 					<ProgressCircle
-					style={ { height: 200 } }
-					progress={ 0.7 }
-					progressColor={'rgb(134, 65, 244)'}
+					style={ { height: 350 } }
+					progress={ this.state.currentStepCount / this.state.stepGoal }
+					progressColor={'rgb(241, 196, 15)'}
 					/> 
 				</View>
 				<View style={styles.overlapper}>
-					<View style={styles.inner}>
-						<Foundation name = 'foot' />
+					<View style={styles.innerLeft}>
+						<Foundation name = 'foot' size = {110} />
+						<Foundation name = 'foot' size = {110} style = {styles.rightFoot}/>
 					</View>
-					<View style={styles.inner}>
-						<Text>Steps so far: {this.state.currentStepCount}</Text>
+					<View style={styles.innerRight}>
+						<Text style = {styles.rightContent}>   {this.state.currentStepCount + " /"}</Text>
+						<TextInput
+						style={styles.rightContent}
+						placeholder= "1000"
+						onSubmitEditing={(event) => this.validateInput(event.nativeEvent.text)}
+						/>
 					</View>
 				</View>
 			</View>
@@ -85,29 +96,40 @@ export default class motivatingPedometer extends Component{
 	
 const styles = StyleSheet.create({
 	container: {
-		borderWidth: 1,
-		borderColor: "black",
+		marginTop: 20,
 		justifyContent: "center"
 	},
 	circleContainer: {
 		marginHorizontal: 20,
-		borderWidth: 1,
-		borderColor: "black"
 	},
 	overlapper: {
-		borderWidth: 1,
-		borderColor: "black",
 		flexDirection: "row",
 		justifyContent: "center",
 		position: "absolute",
 		zIndex: 1,
 		width: "100%"
 	},
-	inner: {
-		marginHorizontal: 8,
-		borderWidth: 1,
-		borderColor: "black",
-		height: 75,
-		width: 75
+	innerRight: {
+		marginTop: 100,
+		height: 130,
+		width: 130,
+		justifyContent:  "center",
+	},
+	innerLeft: {
+		marginBottom: 100,
+		flexDirection: "row",
+		height: 150,
+		width: 140,
+		alignItems: "center",
+		justifyContent:  "center"
+	},
+	rightContent: {
+		fontSize: 40,
+		fontWeight: "400"
+	}, 
+	rightFoot: {
+		marginLeft: 10,
+		marginTop:40,
+		transform: [{scaleX: -1}]
 	}
 });
