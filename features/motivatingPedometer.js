@@ -5,8 +5,7 @@ import { ProgressCircle }  from 'react-native-svg-charts'
 import {Foundation} from '@expo/vector-icons';
 
 export default class motivatingPedometer extends Component{
-	/* Denne komponenten setter sammen statusbar, foot-icon,
-	implementer aksess til accelerometer og styler det */
+
 	state = {
 		stepGoal: 1000,
 		isPedometerAvailable: "checking",
@@ -63,6 +62,10 @@ export default class motivatingPedometer extends Component{
 	validateInput = text => {
 		isNaN(text) ? Alert.alert("Error", "Please type a number") : this.setState({stepGoal: text})
 	};
+
+	isGoalReached = () => {
+		
+	}
 	
 	render(){
 		console.log(this.state.stepGoal);
