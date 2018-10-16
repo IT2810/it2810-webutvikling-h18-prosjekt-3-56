@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Text, View, StyleSheet, TextInput, Alert} from 'react-native';
 import {Pedometer} from 'expo';
-import { ProgressCircle }  from 'react-native-svg-charts';
+import {ProgressCircle }  from 'react-native-svg-charts';
 import {Foundation} from '@expo/vector-icons';
 
 export default class MotivatingPedometer extends Component{
