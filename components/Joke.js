@@ -10,24 +10,35 @@ export default class Joke extends Component {
       punchline: "",
       status: 0
     }
+    this.clickBox = this.clickBox.bind(this);
   }
   componentDidMount(){
     this.fetchJoke();
   }
   render() {
+    console.log(this.state.status);
     return (
-      <View>
+      <TouchableOpacity onPress = {this.clickBox}>
         <View className = "left">
-          <Text onPress = {() =>{this.clickBox}}>{this.state.setup}</Text>
-          <Text>{this.state.punchline}</Text>
+          {
+            this.state.status ? <Text>{this.state.punchline}</Text> : <Text>{this.state.setup}</Text> 
+          }
         </View>
         <View className = "right">
         </View>
-      </View>
+      </TouchableOpacity>
     );
   }
   clickBox(){
-
+    console.log(this.state);
+    if(this.state.status == 0){
+      this.setState({
+        status: 1
+      })
+    }
+    else{
+      this.fetchJoke();
+    }
   }
   fetchJoke(){
     let joke = fetch("https://08ad1pao69.execute-api.us-east-1.amazonaws.com/dev/random_joke")
@@ -43,7 +54,8 @@ export default class Joke extends Component {
     .then((data) => {
       this.setState({
         setup: data.setup,
-        punchline: data.punchline
+        punchline: data.punchline,
+        status: 0
       })
     })
   }
