@@ -38,7 +38,7 @@ export default class motivatingPedometer extends Component{
 					isPedometerAvailable: "Could not get isPedometerAvailable: " + error
 				});
 			}
-		); /*
+		);
 		const end = new Date();
 		const start = new Date();
 		start.setDate(end.getDate() - 1);
@@ -51,7 +51,7 @@ export default class motivatingPedometer extends Component{
 					 pastStepCount: "Could not get stepCount: " + error
 				});
 			}
-		); */
+		); 
 	}; 
 	
 	_unsubscribe = () => {
