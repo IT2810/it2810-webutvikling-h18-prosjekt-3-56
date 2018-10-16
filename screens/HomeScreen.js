@@ -1,5 +1,6 @@
 import React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
+import Quote from '../components/Quote.js';
 
 export default class HomeScreen extends React.Component {
 
@@ -10,7 +11,6 @@ export default class HomeScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        //Skritt
         <Quote/>
       </View>
     );
