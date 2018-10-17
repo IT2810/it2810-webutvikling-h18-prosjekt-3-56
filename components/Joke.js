@@ -12,23 +12,24 @@ export default class Joke extends Component {
     }
     this.clickBox = this.clickBox.bind(this);
   }
+
   componentDidMount(){
     this.fetchJoke();
   }
+
   render() {
     console.log(this.state.status);
     return (
-      <TouchableOpacity onPress = {this.clickBox}>
-        <View className = "left">
-          {
-            this.state.status ? <Text>{this.state.punchline}</Text> : <Text>{this.state.setup}</Text> 
-          }
-        </View>
-        <View className = "right">
-        </View>
+      <TouchableOpacity activeOpacity = {1} style = {styles.topac} onPress = {this.clickBox}>
+        {
+          this.state.status
+          ? <Text style = {styles.punch}>{this.state.punchline}</Text>
+          : <Text style = {styles.setup}>{this.state.setup}</Text>
+        }
       </TouchableOpacity>
     );
   }
+
   clickBox(){
     console.log(this.state);
     if(this.state.status == 0){
@@ -40,6 +41,7 @@ export default class Joke extends Component {
       this.fetchJoke();
     }
   }
+
   fetchJoke(){
     let joke = fetch("https://08ad1pao69.execute-api.us-east-1.amazonaws.com/dev/random_joke")
     .then(function(response){
@@ -60,3 +62,34 @@ export default class Joke extends Component {
     })
   }
 }
+
+const styles = StyleSheet.create(
+  {
+
+    topac:{
+      flex:1,
+      shadowColor: 'rgba(0,0,0, .4)', // IOS
+      shadowOffset: { height: 1, width: 1 }, // IOS
+      shadowOpacity: 1, // IOS
+      shadowRadius: 1, //IOS
+
+      elevation: 2, // Android
+      justifyContent: 'center',
+
+      flexDirection: 'column',
+
+      borderBottomColor:'black',
+      borderBottomWidth: StyleSheet.hairlineWidth,
+    },
+    setup:{
+      fontSize:35,
+      textAlign:'center'
+    },
+    punch:{
+      fontSize:45,
+      color:'#f39c12',
+      textAlign:'center'
+
+    }
+  }
+)
