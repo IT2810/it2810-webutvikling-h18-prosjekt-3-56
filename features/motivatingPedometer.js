@@ -69,7 +69,7 @@ export default class motivatingPedometer extends Component{
 			<View style={styles.container}>
 				<View style={styles.circleContainer}> 
 					<ProgressCircle
-					style={ { height: 350 } }
+					style = {styles.progressCircle}
 					progress={ this.state.currentStepCount / this.state.stepGoal }
 					progressColor={'rgb(241, 196, 15)'}
 					/> 
@@ -95,36 +95,53 @@ export default class motivatingPedometer extends Component{
 	
 const styles = StyleSheet.create({
 	container: {
+		flex: 1,
 		marginTop: 20,
-		justifyContent: "center"
+		justifyContent: "center",
+		borderWidth: 1,
+		borderColor: 'black'
 	},
 	circleContainer: {
-		marginHorizontal: 20,
+		height: '100%',
+		width: '94%',
+		marginHorizontal: '3%',
+		borderWidth: 1,
+		borderColor: 'black'
+	},
+	progressCircle: {
+		height: '100%'
 	},
 	overlapper: {
 		flexDirection: "row",
 		justifyContent: "center",
 		position: "absolute",
 		zIndex: 1,
-		width: "100%"
+		width: "100%",
+		height: "72%",
+		borderWidth: 1,
+		borderColor: 'black'
 	},
 	innerRight: {
-		marginTop: 100,
-		height: 130,
-		width: 130,
-		justifyContent:  "center",
+		justifyContent: "flex-start",
+		marginTop: "25%",
+		height: '60%',
+		width: '35%',
+		borderWidth: 1,
+		borderColor: 'black'
 	},
 	innerLeft: {
-		marginBottom: 100,
 		flexDirection: "row",
-		height: 150,
-		width: 140,
-		alignItems: "center",
-		justifyContent:  "center"
+		height: '60%',
+		width: '35%',
+		justifyContent:  "center",
+		borderWidth: 1,
+		borderColor: 'black'
 	},
 	rightContent: {
-		fontSize: 40,
-		fontWeight: "400"
+		fontSize: 50,
+		fontWeight: "400",
+		borderWidth: 1,
+		borderColor: "black"
 	}, 
 	rightFoot: {
 		marginLeft: 10,

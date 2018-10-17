@@ -12,6 +12,7 @@ export default class HomeScreen extends React.Component {
     return (
       <View style={styles.container}>
         <Pedometer />
+        <View style = {styles.container}></View>
       </View>
     );
   }
