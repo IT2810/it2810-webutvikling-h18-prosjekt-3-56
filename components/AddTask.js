@@ -13,7 +13,8 @@ export default class AddTask extends Component {
     return (
       <TouchableOpacity onPress ={() => {this.props.click(this.state.text)}}>
         <View style = {styles.container}>
-          <TextInput style = {styles.input} placeHolder = "The road to success is action." onChangeText = {(text) => this.setState({text})}/>
+          <TextInput style = {styles.input} placeHolder = 'The road to success is action.'
+             onChangeText = {(text) => this.setState({text})}></TextInput>
           <Text style = {styles.button}>ADD</Text>
         </View>
       </TouchableOpacity>
