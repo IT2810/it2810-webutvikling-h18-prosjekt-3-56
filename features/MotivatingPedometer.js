@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {Text, View, StyleSheet, TextInput, Alert} from 'react-native';
 import {Pedometer} from 'expo';
-import { ProgressCircle }  from 'react-native-svg-charts'
+import {ProgressCircle }  from 'react-native-svg-charts';
 import {Foundation} from '@expo/vector-icons';
 
-export default class motivatingPedometer extends Component{
+export default class MotivatingPedometer extends Component{
 
 	state = {
 		stepGoal: 1000,
@@ -16,7 +16,7 @@ export default class motivatingPedometer extends Component{
 	componentDidMount() {
 		this._subscribe();
 	};
-	
+
 	componentWillUnmount() {
 		this._unsubscribe();
 	};
@@ -52,8 +52,8 @@ export default class motivatingPedometer extends Component{
 				});
 			}
 		); */
-	}; 
-	
+	};
+
 	_unsubscribe = () => {
 		this._subscription && this._subscription.remove();
 		this._subscription = null;
@@ -62,17 +62,17 @@ export default class motivatingPedometer extends Component{
 	validateInput = text => {
 		isNaN(text) ? Alert.alert("Error", "Please type a number") : this.setState({stepGoal: text})
 	};
-	
+
 	render(){
 		console.log(this.state.stepGoal);
 		return (
 			<View style={styles.container}>
-				<View style={styles.circleContainer}> 
+				<View style={styles.circleContainer}>
 					<ProgressCircle
 					style = {styles.progressCircle}
 					progress={ this.state.currentStepCount / this.state.stepGoal }
 					progressColor={'rgb(241, 196, 15)'}
-					/> 
+					/>
 				</View>
 				<View style={styles.overlapper}>
 					<View style={styles.innerLeft}>
@@ -92,7 +92,7 @@ export default class motivatingPedometer extends Component{
 		);
 	};
 };
-	
+
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
