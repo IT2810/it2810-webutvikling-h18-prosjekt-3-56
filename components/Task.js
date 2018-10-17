@@ -37,7 +37,6 @@ const styles = StyleSheet.create({
   },
   font:{
     fontSize: 25,
-    fontFamily: "Roboto",
     padding:3
   },
   margin:{
