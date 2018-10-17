@@ -8,7 +8,6 @@ export default class motivatingPedometer extends Component{
 
 	state = {
 		stepGoal: 1000,
-		isPedometerAvailable: "checking",
 		currentStepCount: 100,
 	};
 
