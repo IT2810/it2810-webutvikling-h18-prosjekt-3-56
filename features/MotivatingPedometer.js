@@ -14,8 +14,8 @@ export default class MotivatingPedometer extends Component{
 
 	componentDidMount() {
 		this._subscribe();
-		this.footSize = Dimensions.get('window').height > 600 ? 100 : 50;
-		this.textSize = Dimensions.get('window').height > 600 ? 35 : 20;
+		this.footSize = Dimensions.get('window').height > 700 ? 100 : 50;
+		this.textSize = Dimensions.get('window').height > 700 ? 35 : 20;
 	};
 
 

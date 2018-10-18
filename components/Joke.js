@@ -15,7 +15,7 @@ export default class Joke extends Component {
     this.clickBox = this.clickBox.bind(this);
   }
 
-  shouldShrink = () => Dimensions.get('window').height < 600
+  shouldShrink = () => Dimensions.get('window').height < 700
 
   componentDidMount(){
     this.fetchJoke();
