@@ -25,14 +25,13 @@ export default class TodoScreen extends React.Component {
       taskList: []
     }
     //has the initial data read been executed?
-    this.dataRead = false;
 
     this.addTaskClicked = this.addTaskClicked.bind(this);
     this.doneClicked = this.doneClicked.bind(this)
   }
 
   static navigationOptions = {
-    title: 'ToDude',
+    title: 'Todo',
   };
 
   render() {
@@ -53,28 +52,24 @@ export default class TodoScreen extends React.Component {
   }
 
   componentDidMount(){
-    console.log("2");
-    if(this.dataRead){
-
-    }
-    else{
       this.initData();
-      console.log("as");
-    }
   }
-  //Finds the element in the ltruetrueist and removes it from the taskList in state
-  doneClicked(id){
-    this.setState((prev) => {
-      console.log("setstate");
-      for(let i = 0; i < prev.taskList.length; i++){
-        if (prev.taskList[i].id == id){
-          prev.taskList.splice(i,1);
-          array = prev.taskList;
-          return {taskList: array};
-        }
+
+  removeItem(id,list){
+    for(let i = 0; i < list.length; i++){
+      if (list[i].id == id){
+        list.splice(i,1);
+        array = list;
+        return array;
       }
-      return {tasklist: prev.taskList};
-    });
+    }
+    return list;
+  }
+  //Finds the element in the list and removes it from the taskList in state
+  doneClicked(id){
+    this.setState((prev) => ({
+      taskList: this.removeItem(id, prev.taskList)
+    }));
   }
 
   //Adds new task. The id will become id of last element +1 unless the lists length is 0
@@ -83,7 +78,6 @@ export default class TodoScreen extends React.Component {
       {
         if (prevState.taskList.length!= 0){
           id = prevState.taskList[prevState.taskList.length -1].id + 1;
-          console.log(id);
           return {taskList: [...prevState.taskList, {id: id, text: tex}]}
         }
         else{
@@ -102,7 +96,6 @@ export default class TodoScreen extends React.Component {
       if (value !== null) {
         // We have data!!
         tasks = JSON.parse(value);
-        console.log(tasks.taskList);
         this.setState(tasks);
         return tasks.taskList;
       }
@@ -125,7 +118,6 @@ export default class TodoScreen extends React.Component {
       if (value !== null) {
         // We have data!!
         data = JSON.parse(value);
-        console.log(data);
         return data;
       }
       else if (value === null) {

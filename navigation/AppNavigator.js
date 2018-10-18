@@ -29,7 +29,7 @@ HomeStack.navigationOptions = {
 
 const TodoStack = createStackNavigator({TodoScreen});
 TodoStack.navigationOptions = {
-  tabBarLabel: 'ToDude',
+  tabBarLabel: 'Todo',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       type = 'FontAwesome'
