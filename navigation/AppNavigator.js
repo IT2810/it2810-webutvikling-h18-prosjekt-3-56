@@ -1,6 +1,7 @@
 import React from 'react';
-import { Platform } from 'react-native';
+import { Platform, Text } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
+import Colors from '../constants/Colors';
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
@@ -13,7 +14,11 @@ const HomeStack = createStackNavigator({ HomeScreen });
 /*Recall: HomeStack becomes the screen that Tabnavigator renders.
  Tab options must therefore be visible for TabNavigator*/
 HomeStack.navigationOptions = {
-  tabBarLabel: 'Home',
+  tabBarLabel: ({focused}) => (
+    <Text
+     style = {{color: focused ? Colors.tabIconSelected : Colors.tabIconDefault, textAlign:'center'}}>
+      Home
+    </Text> ),
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       type = 'Ionicons'
@@ -29,7 +34,11 @@ HomeStack.navigationOptions = {
 
 const TodoStack = createStackNavigator({TodoScreen});
 TodoStack.navigationOptions = {
-  tabBarLabel: 'Todo',
+  tabBarLabel: ({focused}) => (
+    <Text
+     style = {{color: focused ? Colors.tabIconSelected : Colors.tabIconDefault,textAlign:'center' }}>
+      Todo
+    </Text> ),
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       type = 'FontAwesome'
@@ -42,7 +51,11 @@ TodoStack.navigationOptions = {
 const SettingsStack = createStackNavigator({ SettingsScreen });
 
 SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+  tabBarLabel: ({focused}) => (
+    <Text
+     style = {{color: focused ? Colors.tabIconSelected : Colors.tabIconDefault, textAlign:'center'}}>
+      Settings
+    </Text> ),
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       type = 'Ionicons'

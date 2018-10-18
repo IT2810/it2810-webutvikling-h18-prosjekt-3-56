@@ -9,10 +9,10 @@ import {
   View,
   AsyncStorage} from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
-import Task from '../components/Task.js'
+import Task from '../components/Task.js';
 import Swipeout from 'react-native-swipeout';
 import {removeItem} from '../util/util.js';
-import AddTask from '../components/AddTask.js'
+import AddTask from '../components/AddTask.js';
 
 
 
