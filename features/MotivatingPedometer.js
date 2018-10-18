@@ -5,15 +5,19 @@ import {ProgressCircle }  from 'react-native-svg-charts';
 import {Foundation} from '@expo/vector-icons';
 import Dimensions from 'Dimensions';
 
+
+// A component that renders the entire layout af the pedometer
+// Used on 50% on the home screen
 export default class MotivatingPedometer extends Component{
 
-	state = {
+	state = {  // just some initial values. Arent actually used.
 		stepGoal: 1000,
 		currentStepCount: 100,
 	};
 
 	componentDidMount() {
 		this._subscribe();
+		// sizes for icon and text that should be used based on screen size
 		this.footSize = Dimensions.get('window').height > 700 ? 100 : 50;
 		this.textSize = Dimensions.get('window').height > 700 ? 35 : 25;
 	};
@@ -23,14 +27,19 @@ export default class MotivatingPedometer extends Component{
 		this._unsubscribe();
 	};
 
-	_subscribe = () => {
+	_subscribe = () => {  // Adds a subscription for listening on steps taken
 		this._subscription = Pedometer.watchStepCount(result => {
 			this.setState({
 				currentStepCount: result.steps
 			});
 		});
+		//Steps are automaticly Async downloaded with this subscription. Keeps count for last seven days
 
-		Pedometer.getStepCountAsync(new Date().setHours(0,0,0), new Date()).then(
+		// Retrives (Async) steps taken since midnight the same day.
+		const start = new Date();
+		const end = new Date();
+		start.setHours(0,0,0);
+		Pedometer.getStepCountAsync(start, end).then(
 			result => {
 				this.setState({ currentStepCount: result.steps });
 			},
@@ -42,13 +51,13 @@ export default class MotivatingPedometer extends Component{
 		); 
 	}; 
 	
-	_unsubscribe = () => {
+	_unsubscribe = () => {  // ends the subscription
 		this._subscription && this._subscription.remove();
 		this._subscription = null;
 	}
 
-	validateInput = text => {
-		isNaN(text) ? Alert.alert("Error", "Please type a number") : this.setState({stepGoal: text})
+	validateInput = text => {  // is input a number?
+		isNaN(text) ? Alert.alert("Error", "Please type a valid number") : this.setState({stepGoal: text})
 	};
 
 	render(){
