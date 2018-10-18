@@ -583,6 +583,7 @@ exports[`App snapshot renders the root without loading screen 1`] = `
         </Text>
       </View>
       <View
+        accessibilityLabel="Todo"
         accessible={true}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -707,7 +708,7 @@ exports[`App snapshot renders the root without loading screen 1`] = `
             }
           }
         >
-          ToDude
+          Todo
         </Text>
       </View>
       <View

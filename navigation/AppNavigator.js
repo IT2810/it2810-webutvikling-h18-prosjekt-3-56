@@ -17,9 +17,9 @@ const HomeStack = createStackNavigator({ HomeScreen });
 for the TabNavigator (see below). Equivolent to navigationOptions-field in
 homescreen class*/
 HomeStack.navigationOptions = {
-  tabBarLabel: ({focused}) => (  // The label under the icon.
-    <Text  // focused is true if this tab is the most recently pressed
-     style = {{color: focused ? Colors.tabIconSelected : Colors.tabIconDefault }}>
+  tabBarLabel: ({focused}) => (
+    <Text
+     style = {{color: focused ? Colors.tabIconSelected : Colors.tabIconDefault, textAlign:'center'}}>
       Home
     </Text> ),
   tabBarIcon: ({ focused }) => (  // The icon component to render
@@ -40,8 +40,8 @@ const TodoStack = createStackNavigator({TodoScreen});
 TodoStack.navigationOptions = {
   tabBarLabel: ({focused}) => (
     <Text
-     style = {{color: focused ? Colors.tabIconSelected : Colors.tabIconDefault }}>
-      ToDude
+     style = {{color: focused ? Colors.tabIconSelected : Colors.tabIconDefault,textAlign:'center' }}>
+      Todo
     </Text> ),
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
@@ -57,7 +57,7 @@ const SettingsStack = createStackNavigator({ SettingsScreen });
 SettingsStack.navigationOptions = {
   tabBarLabel: ({focused}) => (
     <Text
-     style = {{color: focused ? Colors.tabIconSelected : Colors.tabIconDefault }}>
+     style = {{color: focused ? Colors.tabIconSelected : Colors.tabIconDefault, textAlign:'center'}}>
       Settings
     </Text> ),
   tabBarIcon: ({ focused }) => (
