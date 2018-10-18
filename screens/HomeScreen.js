@@ -5,7 +5,6 @@ import Joke from '../components/Joke.js';
 
 export default class HomeScreen extends React.Component {
 
-
 // Display options for this screen. Used by the navigator that renders it
   static navigationOptions = {
     title: 'Home'
