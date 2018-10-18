@@ -3,6 +3,7 @@ import {Text, View, StyleSheet, TextInput, Alert} from 'react-native';
 import {Pedometer} from 'expo';
 import {ProgressCircle }  from 'react-native-svg-charts';
 import {Foundation} from '@expo/vector-icons';
+import Dimensions from 'Dimensions';
 
 export default class MotivatingPedometer extends Component{
 
@@ -13,7 +14,10 @@ export default class MotivatingPedometer extends Component{
 
 	componentDidMount() {
 		this._subscribe();
+		this.footSize = Dimensions.get('window').height > 600 ? 100 : 50;
+		this.textSize = Dimensions.get('window').height > 600 ? 35 : 20;
 	};
+
 
 	componentWillUnmount() {
 		this._unsubscribe();
@@ -26,16 +30,13 @@ export default class MotivatingPedometer extends Component{
 			});
 		});
 
-		const end = new Date();
-		const start = new Date();
-		start.setHours(0,0,0);
-		Pedometer.getStepCountAsync(start, end).then(
+		Pedometer.getStepCountAsync(new Date().setHours(0,0,0), new Date()).then(
 			result => {
 				this.setState({ currentStepCount: result.steps });
 			},
 			error => {
 				this.setState({
-					 currentStepCount: error
+					 currentStepCount: 100
 				});
 			}
 		); 
@@ -51,7 +52,6 @@ export default class MotivatingPedometer extends Component{
 	};
 
 	render(){
-		console.log(this.state.stepGoal);
 		return (
 			<View style={styles.container}>
 				<View style={styles.circleContainer}>
@@ -63,13 +63,13 @@ export default class MotivatingPedometer extends Component{
 				</View>
 				<View style={styles.overlapper}>
 					<View style={styles.innerLeft}>
-						<Foundation name = 'foot' size = {100} />
-						<Foundation name = 'foot' size = {100} style = {styles.rightFoot}/>
+						<Foundation name = 'foot' size = {this.footSize} />
+						<Foundation name = 'foot' size = {this.footSize} style = {styles.rightFoot}/>
 					</View>
 					<View style={styles.innerRight}>
-						<Text style = {styles.rightContent}>   {this.state.currentStepCount + " /"}</Text>
+						<Text style = {{fontWeight: '400', fontSize: this.textSize}}>   {this.state.currentStepCount + " /"}</Text>
 						<TextInput
-						style={styles.rightContent}
+						style={{fontWeight: '400', fontSize: this.textSize}}
 						placeholder= "1000"
 						onSubmitEditing={(event) => this.validateInput(event.nativeEvent.text)}
 						/>
