@@ -38,7 +38,7 @@ export default class Joke extends Component {
       })
     }
     else{
-      console.log(this.fetchJoke());
+      this.fetchJoke();
     }
   }
 

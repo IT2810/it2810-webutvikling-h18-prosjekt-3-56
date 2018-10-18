@@ -45,7 +45,6 @@ export default class TodoScreen extends React.Component {
               return(
                 <Task key = {task.id} text = {task.text} id = {task.id} click = {this.doneClicked}/>
               )
-
             })
           }
         </ScrollView>
@@ -66,20 +65,16 @@ export default class TodoScreen extends React.Component {
   //Finds the element in the ltruetrueist and removes it from the taskList in state
   doneClicked(id){
     this.setState((prev) => {
+      console.log("setstate");
       for(let i = 0; i < prev.taskList.length; i++){
-        console.log(prev.taskList[i]);
         if (prev.taskList[i].id == id){
           prev.taskList.splice(i,1);
           array = prev.taskList;
           return {taskList: array};
         }
-        else{
-          console.log("If this prints, you have problem");
-        }
       }
-
-    }
-    );
+      return {tasklist: prev.taskList};
+    });
   }
 
   //Adds new task. The id will become id of last element +1 unless the lists length is 0
