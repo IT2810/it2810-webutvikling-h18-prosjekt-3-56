@@ -2,41 +2,42 @@
 
 exports[`renders correctly 1`] = `
 <View
-  accessible={true}
-  isTVSelectable={true}
-  onResponderGrant={[Function]}
-  onResponderMove={[Function]}
-  onResponderRelease={[Function]}
-  onResponderTerminate={[Function]}
-  onResponderTerminationRequest={[Function]}
-  onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "opacity": 1,
+      "backgroundColor": "#f1c40f",
+      "display": "flex",
+      "flexDirection": "row",
     }
   }
 >
-  <View
+  <TextInput
+    allowFontScaling={true}
+    onChangeText={[Function]}
+    placeHolder="The road to success is action."
     style={
       Object {
-        "backgroundColor": "#f1c40f",
-        "display": "flex",
-        "flexDirection": "row",
+        "flex": 0.8,
+        "fontSize": 20,
+        "height": 50,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    isTVSelectable={true}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "flex": 0.2,
+        "opacity": 1,
       }
     }
   >
-    <TextInput
-      allowFontScaling={true}
-      onChangeText={[Function]}
-      placeHolder="The road to success is action."
-      style={
-        Object {
-          "flex": 0.8,
-          "fontSize": 20,
-          "height": 50,
-        }
-      }
-    />
     <Text
       accessible={true}
       allowFontScaling={true}
@@ -44,7 +45,6 @@ exports[`renders correctly 1`] = `
       style={
         Object {
           "backgroundColor": "#f39c12",
-          "flex": 0.2,
           "fontSize": 17,
           "height": 50,
           "paddingBottom": 14,
