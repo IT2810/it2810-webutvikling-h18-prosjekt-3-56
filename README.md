@@ -31,3 +31,7 @@ Teknologiene vi har valgt skal ha en forklaring i form av et tutorial. Kva og Ko
 Våre todos:
   Kommenter koden på en god måte
   Sende inn timeliste
+  Teste med shallowrendering
+  Merge branches
+  Siste finish app
+  Async i util?
