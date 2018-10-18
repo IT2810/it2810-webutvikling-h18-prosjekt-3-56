@@ -34,6 +34,7 @@ export default class TodoScreen extends React.Component {
     title: 'Todo',
   };
 
+  //Renders addtask and all tasks in state.tasklist
   render() {
     return (
       <View style = {styles.container}>
@@ -55,7 +56,7 @@ export default class TodoScreen extends React.Component {
       this.initData();
   }
 
-  //Finds the element in the list and removes it from the taskList in state
+  //Removes the task that has been finished from state and updates async storage.
   doneClicked(id){
     this.setState((prev) => ({
       taskList: removeItem(id, prev.taskList)
@@ -82,7 +83,7 @@ export default class TodoScreen extends React.Component {
     }
   )}
 
-  //Reads all data in db with key "tasks" and sets the variable dataRead = true
+  //Reads all data in db with key "tasks".
   initData = async() =>{
     try {
       const value = await AsyncStorage.getItem('tasks');
@@ -104,7 +105,7 @@ export default class TodoScreen extends React.Component {
     }
   }
 
-  //general data reader
+  //Loads the data with key = key in async storage and returns it
   loadData = async(key) =>{
     try {
       const value = await AsyncStorage.getItem(key);
@@ -124,6 +125,7 @@ export default class TodoScreen extends React.Component {
     }
   }
 
+  //Stores data in async storage
   storeData = async(data, key) =>{
     try {
       await AsyncStorage.setItem(key, JSON.stringify(data));

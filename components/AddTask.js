@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
 
 
+//Component that lets you type in a task and add it to the tasks.
+//This is done by doing a callback to TodoScreens addTask function.
 export default class AddTask extends Component {
   constructor(props){
     super(props);

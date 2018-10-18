@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
-import Dimensions from 'Dimensions';
 
 
 export default class Joke extends Component {
-
+  //Status is a variable that shows which text is being shown in the ui
+  //Status = 0 means that setup is being shown, 1 means that punchline is being shown
   constructor(props){
     super(props);
     this.state = {
@@ -15,27 +15,29 @@ export default class Joke extends Component {
     this.clickBox = this.clickBox.bind(this);
   }
 
-  shouldShrink = () => Dimensions.get('window').height < 700
-
+  //Fetches a first joke
   componentDidMount(){
     this.fetchJoke();
   }
 
+
   render() {
-    console.log(this.state.status);
     return (
       <TouchableOpacity activeOpacity = {1} style = {styles.topac} onPress = {this.clickBox}>
         {
           this.state.status
-          ? <Text style = {[styles.punch, this.shouldShrink() ? {fontSize: 35} : {}]}>{this.state.punchline}</Text>
-          : <Text style = {[styles.setup, this.shouldShrink() ? {fontSize: 25} : {}]}>{this.state.setup}</Text>
+          ? <Text style = {styles.punch}>{this.state.punchline}</Text>
+          : <Text style = {styles.setup}>{this.state.setup}</Text>
         }
       </TouchableOpacity>
     );
   }
 
+  //Gets called when the TouchableOpacity gets pressed. Changes the state
+  //which results in the component being re-rendered with new part of a joke.
+  //The else: Means that the box has been pressed while punchline is showing,
+  //that means we need to fetch a new joke.
   clickBox(){
-    console.log(this.state);
     if(this.state.status == 0){
       this.setState({
         status: 1
@@ -46,6 +48,8 @@ export default class Joke extends Component {
     }
   }
 
+
+  //Fetches a joke from the open API "official joke api" and changes the components state.
   fetchJoke(){
     let joke = fetch("https://08ad1pao69.execute-api.us-east-1.amazonaws.com/dev/random_joke")
     .then(function(response){
