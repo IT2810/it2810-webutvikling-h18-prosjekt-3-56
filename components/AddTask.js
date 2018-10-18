@@ -11,12 +11,14 @@ export default class AddTask extends Component {
   }
   render() {
     return (
-      <TouchableOpacity onPress ={() => {this.props.click(this.state.text)}}>
+
         <View style = {styles.container}>
           <TextInput style = {styles.input} placeHolder = "The road to success is action." onChangeText = {(text) => this.setState({text})}/>
-          <Text style = {styles.button}>ADD</Text>
+          <TouchableOpacity style = {styles.topac} onPress ={() => {this.state.text !== "" ? this.props.click(this.state.text) : null}}>
+            <Text style = {styles.button}>ADD</Text>
+          </TouchableOpacity>
         </View>
-      </TouchableOpacity>
+
     );
   }
 }
@@ -32,9 +34,12 @@ const styles = StyleSheet.create({
     flex:0.8,
     fontSize:20
   },
+  topac:{
+    flex:0.2,
+
+  },
   button:{
     height:50,
-    flex:0.2,
     backgroundColor:'#f39c12',
     fontSize: 17,
     textAlign:'center',

@@ -45,6 +45,7 @@ export default class TodoScreen extends React.Component {
               return(
                 <Task key = {task.id} text = {task.text} id = {task.id} click = {this.doneClicked}/>
               )
+
             })
           }
         </ScrollView>
