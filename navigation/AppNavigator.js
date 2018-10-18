@@ -17,7 +17,7 @@ HomeStack.navigationOptions = {
   tabBarLabel: ({focused}) => (
     <Text
      style = {{color: focused ? Colors.tabIconSelected : Colors.tabIconDefault }}>
-      Settings
+      Home
     </Text> ),
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
