@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+      "justifyContent": "center",
+      "marginTop": "3%",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "height": "100%",
+        "marginHorizontal": "3%",
+        "width": "94%",
+      }
+    }
+  >
+    <View
+      onLayout={[Function]}
+      style={
+        Object {
+          "height": "100%",
+        }
+      }
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "column-reverse",
+        "height": "90%",
+        "position": "absolute",
+        "width": "100%",
+        "zIndex": 1,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "height": "40%",
+          "justifyContent": "center",
+          "width": "40%",
+        }
+      }
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "fontSize": undefined,
+            "fontWeight": "400",
+          }
+        }
+      >
+           
+        100 /
+      </Text>
+      <TextInput
+        allowFontScaling={true}
+        onSubmitEditing={[Function]}
+        placeholder="1000"
+        style={
+          Object {
+            "fontSize": undefined,
+            "fontWeight": "400",
+          }
+        }
+      />
+    </View>
+    <View
+      style={
+        Object {
+          "flexDirection": "row",
+          "height": "45%",
+          "justifyContent": "center",
+          "width": "32%",
+        }
+      }
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+      />
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+      />
+    </View>
+  </View>
+</View>
+`;
+
+exports[`renders progressCircle correct 1`] = `
+<View
+  onLayout={[Function]}
+  style={
+    Object {
+      "height": 350,
+    }
+  }
+/>
+`;
