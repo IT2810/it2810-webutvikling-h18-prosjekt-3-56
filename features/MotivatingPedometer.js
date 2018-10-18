@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {Text, View, StyleSheet, TextInput, Alert} from 'react-native';
 import {Pedometer} from 'expo';
-import { ProgressCircle }  from 'react-native-svg-charts'
+import {ProgressCircle }  from 'react-native-svg-charts';
 import {Foundation} from '@expo/vector-icons';
 
-export default class motivatingPedometer extends Component{
+export default class MotivatingPedometer extends Component{
 
 	state = {
 		stepGoal: 1000,
@@ -14,7 +14,7 @@ export default class motivatingPedometer extends Component{
 	componentDidMount() {
 		this._subscribe();
 	};
-	
+
 	componentWillUnmount() {
 		this._unsubscribe();
 	};
@@ -49,22 +49,22 @@ export default class motivatingPedometer extends Component{
 	validateInput = text => {
 		isNaN(text) ? Alert.alert("Error", "Please type a number") : this.setState({stepGoal: text})
 	};
-	
+
 	render(){
 		console.log(this.state.stepGoal);
 		return (
 			<View style={styles.container}>
-				<View style={styles.circleContainer}> 
+				<View style={styles.circleContainer}>
 					<ProgressCircle
-					style={ { height: 350 } }
+					style = {styles.progressCircle}
 					progress={ this.state.currentStepCount / this.state.stepGoal }
 					progressColor={'rgb(241, 196, 15)'}
-					/> 
+					/>
 				</View>
 				<View style={styles.overlapper}>
 					<View style={styles.innerLeft}>
-						<Foundation name = 'foot' size = {110} />
-						<Foundation name = 'foot' size = {110} style = {styles.rightFoot}/>
+						<Foundation name = 'foot' size = {100} />
+						<Foundation name = 'foot' size = {100} style = {styles.rightFoot}/>
 					</View>
 					<View style={styles.innerRight}>
 						<Text style = {styles.rightContent}>   {this.state.currentStepCount + " /"}</Text>
@@ -79,39 +79,44 @@ export default class motivatingPedometer extends Component{
 		);
 	};
 };
-	
+
 const styles = StyleSheet.create({
 	container: {
-		marginTop: 20,
-		justifyContent: "center"
+		flex: 1,
+		marginTop: "3%",
+		justifyContent: "center",
 	},
 	circleContainer: {
-		marginHorizontal: 20,
+		height: '100%',
+		width: '94%',
+		marginHorizontal: '3%',
+	},
+	progressCircle: {
+		height: '100%'
 	},
 	overlapper: {
 		flexDirection: "row",
 		justifyContent: "center",
 		position: "absolute",
 		zIndex: 1,
-		width: "100%"
+		width: "100%",
+		height: "72%",
 	},
 	innerRight: {
-		marginTop: 100,
-		height: 130,
-		width: 130,
-		justifyContent:  "center",
+		marginTop: "35%",
+		height: "40%",
+		width: "35%",
 	},
 	innerLeft: {
-		marginBottom: 100,
+		marginTop: "5%",
 		flexDirection: "row",
-		height: 150,
-		width: 140,
-		alignItems: "center",
-		justifyContent:  "center"
+		height: '55%',
+		width: '32%',
+		justifyContent: "center",
 	},
 	rightContent: {
-		fontSize: 40,
-		fontWeight: "400"
+		fontSize: 35,
+		fontWeight: "400",
 	}, 
 	rightFoot: {
 		marginLeft: 10,
