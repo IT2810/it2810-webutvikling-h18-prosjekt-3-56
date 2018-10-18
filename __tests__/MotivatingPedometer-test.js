@@ -4,10 +4,6 @@ import renderer from 'react-test-renderer';
 import ShallowRenderer from 'react-test-renderer/shallow';
 import {ProgressCircle }  from 'react-native-svg-charts';
 
-it("renders correctly", () => {
-	const tree = renderer.create(<Pedometer />).toJSON();
-	expect(tree).toMatchSnapshot();
-})
 
 it("renders progressCircle correct", () => {
 	const tree = renderer
@@ -19,5 +15,10 @@ it("renders progressCircle correct", () => {
 		/>
 	)
 	.toJSON();
+	expect(tree).toMatchSnapshot();
+})
+
+it("renders correctly", () => {
+	const tree = renderer.create(<Pedometer />).toJSON();
 	expect(tree).toMatchSnapshot();
 })
