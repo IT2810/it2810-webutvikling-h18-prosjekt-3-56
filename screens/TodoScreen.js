@@ -95,7 +95,7 @@ export default class TodoScreen extends React.Component {
           return {taskList: [...prevState.taskList, {id: 0, text: tex}]}
         }
     }, () => {
-      this.storeData(this.state);
+      this.storeData(this.state, 'tasks');
 
     }
   )}
@@ -123,9 +123,30 @@ export default class TodoScreen extends React.Component {
     }
   }
 
-  storeData = async(data) =>{
+  //general data reader
+  loadData = async(key) =>{
     try {
-      await AsyncStorage.setItem('tasks', JSON.stringify(data));
+      const value = await AsyncStorage.getItem(key);
+      if (value !== null) {
+        // We have data!!
+        data = JSON.parse(value);
+        console.log(data);
+        return data;
+      }
+      else if (value === null) {
+        console.log("There was no data stored");
+        return {};
+      }
+    } catch (error) {
+      console.log(error);
+      // Error retrieving data
+      return error;
+    }
+  }
+
+  storeData = async(data, key) =>{
+    try {
+      await AsyncStorage.setItem(key, JSON.stringify(data));
     } catch (error) {
     // Error saving data
       console.log(error);

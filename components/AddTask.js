@@ -13,10 +13,16 @@ export default class AddTask extends Component {
     return (
 
         <View style = {styles.container}>
+<<<<<<< HEAD
           <TextInput style = {styles.input} placeHolder = "The road to success is action." onChangeText = {(text) => this.setState({text})}/>
           <TouchableOpacity style = {styles.topac} onPress ={() => {this.state.text !== "" ? this.props.click(this.state.text) : null}}>
             <Text style = {styles.button}>ADD</Text>
           </TouchableOpacity>
+=======
+          <TextInput style = {styles.input} placeHolder = 'The road to success is action.'
+             onChangeText = {(text) => this.setState({text})}></TextInput>
+          <Text style = {styles.button}>ADD</Text>
+>>>>>>> develop
         </View>
 
     );

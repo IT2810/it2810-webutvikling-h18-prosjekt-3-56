@@ -22,5 +22,7 @@ beforeAll(() => {
 });
 
 test("Shallow render test of Todoscreen",() =>{
-  expect(result.ref).toBe(null);
+  expect(result.props.children).toBe([
+    <AddTask
+  ]);
 });
