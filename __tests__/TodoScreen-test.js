@@ -11,17 +11,10 @@ import ScrollView from 'react-native';
 import ShallowRenderer from 'react-test-renderer/shallow'
 import renderer from 'react-test-renderer';
 
-let rend;
-let result;
 
-
-beforeAll(() => {
-  rend = new ShallowRenderer();
-  rend.render(<TodoScreen/>);
-  result = rend.getRenderOutput();
-  console.log(result.props.children[0]);
-});
-
-test("Shallow render test of Todoscreen",() =>{
-  expect(result.props.children);
+it('renders correctly', () => {
+  const tree = renderer
+    .create(<TodoScreen/>)
+    .toJSON();
+  expect(tree).toMatchSnapshot();
 });
