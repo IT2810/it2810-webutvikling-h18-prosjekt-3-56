@@ -12,7 +12,6 @@ export default class HomeScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Pedometer />
         <View style = {{flex:1}}>
           <Joke/>
         </View>

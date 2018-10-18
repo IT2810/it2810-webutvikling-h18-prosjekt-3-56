@@ -11,7 +11,7 @@ import {
 import { ExpoLinksView } from '@expo/samples';
 import Task from '../components/Task.js'
 import Swipeout from 'react-native-swipeout';
-
+import {removeItem} from '../util/util.js';
 import AddTask from '../components/AddTask.js'
 
 
@@ -55,21 +55,14 @@ export default class TodoScreen extends React.Component {
       this.initData();
   }
 
-  removeItem(id,list){
-    for(let i = 0; i < list.length; i++){
-      if (list[i].id == id){
-        list.splice(i,1);
-        array = list;
-        return array;
-      }
-    }
-    return list;
-  }
   //Finds the element in the list and removes it from the taskList in state
   doneClicked(id){
     this.setState((prev) => ({
-      taskList: this.removeItem(id, prev.taskList)
-    }));
+      taskList: removeItem(id, prev.taskList)
+    }), () => {
+      this.storeData(this.state, 'tasks');
+    }
+  );
   }
 
   //Adds new task. The id will become id of last element +1 unless the lists length is 0
