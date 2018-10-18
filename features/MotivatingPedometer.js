@@ -15,7 +15,7 @@ export default class MotivatingPedometer extends Component{
 	componentDidMount() {
 		this._subscribe();
 		this.footSize = Dimensions.get('window').height > 700 ? 100 : 50;
-		this.textSize = Dimensions.get('window').height > 700 ? 35 : 20;
+		this.textSize = Dimensions.get('window').height > 700 ? 35 : 25;
 	};
 
 
@@ -62,10 +62,6 @@ export default class MotivatingPedometer extends Component{
 					/>
 				</View>
 				<View style={styles.overlapper}>
-					<View style={styles.innerLeft}>
-						<Foundation name = 'foot' size = {this.footSize} />
-						<Foundation name = 'foot' size = {this.footSize} style = {styles.rightFoot}/>
-					</View>
 					<View style={styles.innerRight}>
 						<Text style = {{fontWeight: '400', fontSize: this.textSize}}>   {this.state.currentStepCount + " /"}</Text>
 						<TextInput
@@ -73,6 +69,10 @@ export default class MotivatingPedometer extends Component{
 						placeholder= "1000"
 						onSubmitEditing={(event) => this.validateInput(event.nativeEvent.text)}
 						/>
+					</View>
+					<View style={styles.innerLeft}>
+						<Foundation name = 'foot' size = {this.footSize} />
+						<Foundation name = 'foot' size = {this.footSize} style = {styles.rightFoot}/>
 					</View>
 				</View>
 			</View>
@@ -95,22 +95,22 @@ const styles = StyleSheet.create({
 		height: '100%'
 	},
 	overlapper: {
-		flexDirection: "row",
-		justifyContent: "center",
+		flexDirection: "column-reverse",
+		alignItems: "center",
 		position: "absolute",
 		zIndex: 1,
 		width: "100%",
-		height: "72%",
+		height: "90%",
 	},
 	innerRight: {
-		marginTop: "35%",
+		alignItems: "center",
+		justifyContent: "center",
 		height: "40%",
-		width: "35%",
+		width: "40%",
 	},
 	innerLeft: {
-		marginTop: "5%",
 		flexDirection: "row",
-		height: '55%',
+		height: '45%',
 		width: '32%',
 		justifyContent: "center",
 	},
