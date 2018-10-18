@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { Text, View, StyleSheet} from 'react-native';
 import Swipeout from 'react-native-swipeout';
 
-
+//Component that shows a task. Task text is passed as a prop from TodoScreen.
+//Using a 3rd party library called swipeout that lets you have nice buttons
+//that you can swipe out.
 export default class Task extends Component {
 
   constructor(props){
@@ -11,7 +13,8 @@ export default class Task extends Component {
       {
         text:'Done',
         backgroundColor: "#2ecc71",
-        //onPress = function to change state, task has been completed
+        //Callback to todoscreen, calls the method doneClicked. Removes the task
+        //from the state and the async storage gets updated.
         onPress: () => this.props.click(props.id)
 
       }

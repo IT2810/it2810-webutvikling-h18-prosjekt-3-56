@@ -136,7 +136,61 @@ exports[`App snapshot renders the root without loading screen 1`] = `
                         "flex": 1,
                       }
                     }
-                  />
+                  >
+                    <View
+                      style={
+                        Object {
+                          "flex": 1,
+                        }
+                      }
+                    >
+                      <View
+                        accessible={true}
+                        isTVSelectable={true}
+                        onResponderGrant={[Function]}
+                        onResponderMove={[Function]}
+                        onResponderRelease={[Function]}
+                        onResponderTerminate={[Function]}
+                        onResponderTerminationRequest={[Function]}
+                        onStartShouldSetResponder={[Function]}
+                        style={
+                          Object {
+                            "borderBottomColor": "black",
+                            "borderBottomWidth": 0.5,
+                            "elevation": 2,
+                            "flex": 1,
+                            "flexDirection": "column",
+                            "justifyContent": "center",
+                            "opacity": 1,
+                            "shadowColor": "rgba(0,0,0, .4)",
+                            "shadowOffset": Object {
+                              "height": 1,
+                              "width": 1,
+                            },
+                            "shadowOpacity": 1,
+                            "shadowRadius": 1,
+                          }
+                        }
+                      >
+                        <Text
+                          accessible={true}
+                          allowFontScaling={true}
+                          ellipsizeMode="tail"
+                          style={
+                            Array [
+                              Object {
+                                "fontSize": 35,
+                                "textAlign": "center",
+                              },
+                              Object {},
+                            ]
+                          }
+                        >
+                          
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
                 </View>
               </View>
               <View
@@ -397,7 +451,7 @@ exports[`App snapshot renders the root without loading screen 1`] = `
         </Text>
       </View>
       <View
-        accessibilityLabel="ToDude"
+        accessibilityLabel="Todo"
         accessible={true}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -527,7 +581,7 @@ exports[`App snapshot renders the root without loading screen 1`] = `
             }
           }
         >
-          ToDude
+          Todo
         </Text>
       </View>
       <View

@@ -9,10 +9,10 @@ import {
   View,
   AsyncStorage} from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
-import Task from '../components/Task.js'
+import Task from '../components/Task.js';
 import Swipeout from 'react-native-swipeout';
-
-import AddTask from '../components/AddTask.js'
+import {removeItem} from '../util/util.js';
+import AddTask from '../components/AddTask.js';
 
 
 
@@ -25,16 +25,16 @@ export default class TodoScreen extends React.Component {
       taskList: []
     }
     //has the initial data read been executed?
-    this.dataRead = false;
 
     this.addTaskClicked = this.addTaskClicked.bind(this);
     this.doneClicked = this.doneClicked.bind(this)
   }
 
   static navigationOptions = {
-    title: 'ToDude',
+    title: 'Todo',
   };
 
+  //Renders addtask and all tasks in state.tasklist
   render() {
     return (
       <View style = {styles.container}>
@@ -53,32 +53,17 @@ export default class TodoScreen extends React.Component {
   }
 
   componentDidMount(){
-    console.log("2");
-    if(this.dataRead){
-
-    }
-    else{
       this.initData();
-      console.log("as");
-    }
   }
-  //Finds the element in the ltruetrueist and removes it from the taskList in state
-  doneClicked(id){
-    this.setState((prev) => {
-      for(let i = 0; i < prev.taskList.length; i++){
-        console.log(prev.taskList[i]);
-        if (prev.taskList[i].id == id){
-          prev.taskList.splice(i,1);
-          array = prev.taskList;
-          return {taskList: array};
-        }
-        else{
-          console.log("If this prints, you have problem");
-        }
-      }
 
+  //Removes the task that has been finished from state and updates async storage.
+  doneClicked(id){
+    this.setState((prev) => ({
+      taskList: removeItem(id, prev.taskList)
+    }), () => {
+      this.storeData(this.state, 'tasks');
     }
-    );
+  );
   }
 
   //Adds new task. The id will become id of last element +1 unless the lists length is 0
@@ -87,7 +72,6 @@ export default class TodoScreen extends React.Component {
       {
         if (prevState.taskList.length!= 0){
           id = prevState.taskList[prevState.taskList.length -1].id + 1;
-          console.log(id);
           return {taskList: [...prevState.taskList, {id: id, text: tex}]}
         }
         else{
@@ -99,14 +83,13 @@ export default class TodoScreen extends React.Component {
     }
   )}
 
-  //Reads all data in db with key "tasks" and sets the variable dataRead = true
+  //Reads all data in db with key "tasks".
   initData = async() =>{
     try {
       const value = await AsyncStorage.getItem('tasks');
       if (value !== null) {
         // We have data!!
         tasks = JSON.parse(value);
-        console.log(tasks.taskList);
         this.setState(tasks);
         return tasks.taskList;
       }
@@ -122,14 +105,13 @@ export default class TodoScreen extends React.Component {
     }
   }
 
-  //general data reader
+  //Loads the data with key = key in async storage and returns it
   loadData = async(key) =>{
     try {
       const value = await AsyncStorage.getItem(key);
       if (value !== null) {
         // We have data!!
         data = JSON.parse(value);
-        console.log(data);
         return data;
       }
       else if (value === null) {
@@ -143,6 +125,7 @@ export default class TodoScreen extends React.Component {
     }
   }
 
+  //Stores data in async storage
   storeData = async(data, key) =>{
     try {
       await AsyncStorage.setItem(key, JSON.stringify(data));

@@ -16,7 +16,7 @@ const HomeStack = createStackNavigator({ HomeScreen });
 HomeStack.navigationOptions = {
   tabBarLabel: ({focused}) => (
     <Text
-     style = {{color: focused ? Colors.tabIconSelected : Colors.tabIconDefault }}>
+     style = {{color: focused ? Colors.tabIconSelected : Colors.tabIconDefault, textAlign:'center'}}>
       Home
     </Text> ),
   tabBarIcon: ({ focused }) => (
@@ -36,8 +36,8 @@ const TodoStack = createStackNavigator({TodoScreen});
 TodoStack.navigationOptions = {
   tabBarLabel: ({focused}) => (
     <Text
-     style = {{color: focused ? Colors.tabIconSelected : Colors.tabIconDefault }}>
-      ToDude
+     style = {{color: focused ? Colors.tabIconSelected : Colors.tabIconDefault,textAlign:'center' }}>
+      Todo
     </Text> ),
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
@@ -53,7 +53,7 @@ const SettingsStack = createStackNavigator({ SettingsScreen });
 SettingsStack.navigationOptions = {
   tabBarLabel: ({focused}) => (
     <Text
-     style = {{color: focused ? Colors.tabIconSelected : Colors.tabIconDefault }}>
+     style = {{color: focused ? Colors.tabIconSelected : Colors.tabIconDefault, textAlign:'center'}}>
       Settings
     </Text> ),
   tabBarIcon: ({ focused }) => (

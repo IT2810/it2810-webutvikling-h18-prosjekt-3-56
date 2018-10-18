@@ -2,7 +2,6 @@ import React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 import Pedometer from '../features/MotivatingPedometer.js';
 import Joke from '../components/Joke.js';
-//import MotivatingPedometer from '../features/MotivatingPedometer.js';
 
 export default class HomeScreen extends React.Component {
 
