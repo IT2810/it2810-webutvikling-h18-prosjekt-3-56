@@ -3,6 +3,7 @@ import { Platform, Text } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 import Colors from '../constants/Colors';
 
+// Must import so that the stacks can use them as screens
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import TodoScreen from '../screens/TodoScreen';
