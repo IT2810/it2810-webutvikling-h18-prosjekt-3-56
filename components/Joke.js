@@ -26,8 +26,8 @@ export default class Joke extends Component {
       <TouchableOpacity activeOpacity = {1} style = {styles.topac} onPress = {this.clickBox}>
         {
           this.state.status
-          ? <Text style = {styles.punch}>{this.state.punchline}</Text>
-          : <Text style = {styles.setup}>{this.state.setup}</Text>
+          ? <Text style = {[styles.textShadow, styles.punch]}>{this.state.punchline}</Text>
+          : <Text style = {[styles.textShadow, styles.setup]}>{this.state.setup}</Text>
         }
       </TouchableOpacity>
     );
@@ -72,39 +72,33 @@ export default class Joke extends Component {
 
 const styles = StyleSheet.create(
   {
-    topac:
-      (Platform.OS === 'ios') ? {
-        flex:1,
-        shadowOffset:{  width: 10,  height: 10},
-        shadowColor: 'black',
-        shadowOpacity: 1.0,
-        justifyContent: 'center',
-
-        flexDirection: 'column',
-        margin:2,
-        borderBottomColor:'black',
-        borderBottomWidth: StyleSheet.hairlineWidth,
-      } :
-      {
-        flex:1,
-        justifyContent: 'center',
-
-        flexDirection: 'column',
-        margin:2,
-        borderBottomColor:'black',
-        borderBottomWidth: StyleSheet.hairlineWidth,
-        elevation: 2, // Android
+    topac:{
+      flex:1,
+      justifyContent: 'center',
+      flexDirection: 'column',
+      borderBottomColor:'black',
+      borderBottomWidth: StyleSheet.hairlineWidth,
       }
     ,
     setup:{
       fontSize:35,
-      textAlign:'center'
     },
     punch:{
       fontSize:45,
       color:'#f39c12',
-      textAlign:'center'
-
-    }
+    },
+    textShadow: Platform.OS === 'ios' ?
+    {
+      margin: 3,
+      backgroundColor: 'white',
+      shadowColor: '#000',
+      shadowOffset: { width: 2, height: 1 },
+      shadowOpacity: 0.8,
+      shadowRadius:4,  
+      textAlign:'center' 
+    } : 
+    {
+      elevation: 2
+     }
   }
 )
