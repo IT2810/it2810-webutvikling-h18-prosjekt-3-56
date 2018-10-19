@@ -56,9 +56,8 @@ export default class MotivatingPedometer extends Component{
 		this._subscription = null;
 	}
 
-	validateInput = text => {  // is input a number?
-		isNaN(text) ? Alert.alert("Error", "Please type a valid number") : this.setState({stepGoal: text})
-	};
+	validateInput = text => Number(text) > 0  // is input a valid number?
+		? Alert.alert("Error", "Please type a valid number") : this.setState({stepGoal: text})
 
 	render(){
 		return (
@@ -76,7 +75,8 @@ export default class MotivatingPedometer extends Component{
 						<TextInput
 						style={{fontWeight: '400', fontSize: this.textSize}}
 						placeholder= "1000"
-						onSubmitEditing={(event) => this.validateInput(event.nativeEvent.text)}
+						onSubmitEditing={(event) =>
+						this.validateInput(event.nativeEvent.text)}
 						/>
 					</View>
 					<View style={styles.innerLeft}>
