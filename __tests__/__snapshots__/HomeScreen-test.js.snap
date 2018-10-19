@@ -54,7 +54,8 @@ exports[`renders correctly 1`] = `
             "alignItems": "center",
             "height": "40%",
             "justifyContent": "center",
-            "width": "40%",
+            "marginBottom": "3%",
+            "width": "100%",
           }
         }
       >
@@ -90,7 +91,7 @@ exports[`renders correctly 1`] = `
             "flexDirection": "row",
             "height": "45%",
             "justifyContent": "center",
-            "width": "32%",
+            "width": "100%",
           }
         }
       >
@@ -108,57 +109,53 @@ exports[`renders correctly 1`] = `
     </View>
   </View>
   <View
+    accessible={true}
+    isTVSelectable={true}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
     style={
       Object {
+        "borderBottomColor": "black",
+        "borderBottomWidth": 0.5,
         "flex": 1,
+        "flexDirection": "column",
+        "justifyContent": "center",
+        "opacity": 1,
       }
     }
   >
-    <View
+    <Text
       accessible={true}
-      isTVSelectable={true}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
       style={
-        Object {
-          "borderBottomColor": "black",
-          "borderBottomWidth": 0.5,
-          "elevation": 2,
-          "flex": 1,
-          "flexDirection": "column",
-          "justifyContent": "center",
-          "opacity": 1,
-          "shadowColor": "rgba(0,0,0, .4)",
-          "shadowOffset": Object {
-            "height": 1,
-            "width": 1,
+        Array [
+          Object {
+            "backgroundColor": "white",
+            "margin": 3,
+            "shadowColor": "#000",
+            "shadowOffset": Object {
+              "height": 1,
+              "width": 2,
+            },
+            "shadowOpacity": 0.8,
+            "shadowRadius": 4,
+            "textAlign": "center",
           },
-          "shadowOpacity": 1,
-          "shadowRadius": 1,
-        }
+          Object {
+            "fontSize": 35,
+            "textAlign": "center",
+          },
+          Object {},
+        ]
       }
     >
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        style={
-          Array [
-            Object {
-              "fontSize": 35,
-              "textAlign": "center",
-            },
-            Object {},
-          ]
-        }
-      >
-        
-      </Text>
-    </View>
+      
+    </Text>
   </View>
 </View>
 `;

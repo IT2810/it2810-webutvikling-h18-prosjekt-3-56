@@ -46,7 +46,8 @@ exports[`renders correctly 1`] = `
           "alignItems": "center",
           "height": "40%",
           "justifyContent": "center",
-          "width": "40%",
+          "marginBottom": "3%",
+          "width": "100%",
         }
       }
     >
@@ -82,7 +83,7 @@ exports[`renders correctly 1`] = `
           "flexDirection": "row",
           "height": "45%",
           "justifyContent": "center",
-          "width": "32%",
+          "width": "100%",
         }
       }
     >

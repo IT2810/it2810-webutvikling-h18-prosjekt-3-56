@@ -16,7 +16,7 @@ test('validation function works', () => {
   expect(isPostitveInteger('100')).toBe(true);
   expect(isPostitveInteger('-145')).toBe(false);
   expect(isPostitveInteger('0')).toBe(true);
-  expect(isPostitveInteger('kjfdsdf')).toBe(true);
-  expect(isPostitveInteger('1.89')).toBe(true);
+  expect(isPostitveInteger('kjfdsdf')).toBe(false);
+  expect(isPostitveInteger('1.89')).toBe(false);
   expect(isPostitveInteger('18*46 - 12')).toBe(false);
 })

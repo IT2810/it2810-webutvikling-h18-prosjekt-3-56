@@ -143,8 +143,6 @@ exports[`App snapshot renders the root without loading screen 1`] = `
                           "flex": 1,
                           "justifyContent": "center",
                           "marginTop": "3%",
-<<<<<<< HEAD
-=======
                         }
                       }
                     >
@@ -184,7 +182,8 @@ exports[`App snapshot renders the root without loading screen 1`] = `
                               "alignItems": "center",
                               "height": "40%",
                               "justifyContent": "center",
-                              "width": "40%",
+                              "marginBottom": "3%",
+                              "width": "100%",
                             }
                           }
                         >
@@ -220,144 +219,7 @@ exports[`App snapshot renders the root without loading screen 1`] = `
                               "flexDirection": "row",
                               "height": "45%",
                               "justifyContent": "center",
-                              "width": "32%",
-                            }
-                          }
-                        >
-                          <Text
-                            accessible={true}
-                            allowFontScaling={false}
-                            ellipsizeMode="tail"
-                            style={
-                              Array [
-                                Object {
-                                  "color": undefined,
-                                  "fontSize": 12,
-                                },
-                                undefined,
-                                Object {
-                                  "fontFamily": "foundation",
-                                  "fontStyle": "normal",
-                                  "fontWeight": "normal",
-                                },
-                              ]
-                            }
-                          >
-                            
-                          </Text>
-                          <Text
-                            accessible={true}
-                            allowFontScaling={false}
-                            ellipsizeMode="tail"
-                            style={
-                              Array [
-                                Object {
-                                  "color": undefined,
-                                  "fontSize": 12,
-                                },
-                                Object {
-                                  "marginLeft": 10,
-                                  "marginTop": 40,
-                                  "transform": Array [
-                                    Object {
-                                      "scaleX": -1,
-                                    },
-                                  ],
-                                },
-                                Object {
-                                  "fontFamily": "foundation",
-                                  "fontStyle": "normal",
-                                  "fontWeight": "normal",
-                                },
-                              ]
-                            }
-                          >
-                            
-                          </Text>
-                        </View>
-                      </View>
-                    </View>
-                    <View
-                      style={
-                        Object {
-                          "flex": 1,
->>>>>>> develop
-                        }
-                      }
-                    >
-                      <View
-                        style={
-                          Object {
-                            "height": "100%",
-                            "marginHorizontal": "3%",
-                            "width": "94%",
-                          }
-                        }
-                      >
-                        <View
-                          onLayout={[Function]}
-                          style={
-                            Object {
-                              "height": "100%",
-                            }
-                          }
-                        />
-                      </View>
-                      <View
-                        style={
-                          Object {
-                            "alignItems": "center",
-                            "flexDirection": "column-reverse",
-                            "height": "90%",
-                            "position": "absolute",
-                            "width": "100%",
-                            "zIndex": 1,
-                          }
-                        }
-                      >
-                        <View
-                          style={
-                            Object {
-                              "alignItems": "center",
-                              "height": "40%",
-                              "justifyContent": "center",
-                              "width": "40%",
-                            }
-                          }
-                        >
-                          <Text
-                            accessible={true}
-                            allowFontScaling={true}
-                            ellipsizeMode="tail"
-                            style={
-                              Object {
-                                "fontSize": undefined,
-                                "fontWeight": "400",
-                              }
-                            }
-                          >
-                               
-                            100 /
-                          </Text>
-                          <TextInput
-                            allowFontScaling={true}
-                            onSubmitEditing={[Function]}
-                            placeholder="1000"
-                            style={
-                              Object {
-                                "fontSize": undefined,
-                                "fontWeight": "400",
-                              }
-                            }
-                          />
-                        </View>
-                        <View
-                          style={
-                            Object {
-                              "flexDirection": "row",
-                              "height": "45%",
-                              "justifyContent": "center",
-                              "width": "32%",
+                              "width": "100%",
                             }
                           }
                         >
@@ -427,19 +289,10 @@ exports[`App snapshot renders the root without loading screen 1`] = `
                         Object {
                           "borderBottomColor": "black",
                           "borderBottomWidth": 0.5,
-                          "elevation": 3,
                           "flex": 1,
                           "flexDirection": "column",
                           "justifyContent": "center",
-                          "marginBottom": 2,
                           "opacity": 1,
-                          "shadowColor": "rgba(0,0,0, .4)",
-                          "shadowOffset": Object {
-                            "height": 3,
-                            "width": 2,
-                          },
-                          "shadowOpacity": 1,
-                          "shadowRadius": 1,
                         }
                       }
                     >
@@ -448,10 +301,25 @@ exports[`App snapshot renders the root without loading screen 1`] = `
                         allowFontScaling={true}
                         ellipsizeMode="tail"
                         style={
-                          Object {
-                            "fontSize": 35,
-                            "textAlign": "center",
-                          }
+                          Array [
+                            Object {
+                              "backgroundColor": "white",
+                              "margin": 3,
+                              "shadowColor": "#000",
+                              "shadowOffset": Object {
+                                "height": 1,
+                                "width": 2,
+                              },
+                              "shadowOpacity": 0.8,
+                              "shadowRadius": 4,
+                              "textAlign": "center",
+                            },
+                            Object {
+                              "fontSize": 35,
+                              "textAlign": "center",
+                            },
+                            Object {},
+                          ]
                         }
                       >
                         
@@ -705,10 +573,7 @@ exports[`App snapshot renders the root without loading screen 1`] = `
           style={
             Object {
               "color": "#f1c40f",
-<<<<<<< HEAD
               "textAlign": "center",
-=======
->>>>>>> develop
             }
           }
         >
@@ -837,10 +702,7 @@ exports[`App snapshot renders the root without loading screen 1`] = `
           style={
             Object {
               "color": "#ccc",
-<<<<<<< HEAD
               "textAlign": "center",
-=======
->>>>>>> develop
             }
           }
         >
@@ -969,10 +831,7 @@ exports[`App snapshot renders the root without loading screen 1`] = `
           style={
             Object {
               "color": "#ccc",
-<<<<<<< HEAD
               "textAlign": "center",
-=======
->>>>>>> develop
             }
           }
         >
