@@ -54,14 +54,13 @@ Vi begynte navngivingen av branchene våre med “issueID-beskrivelse”, men gi
 For å fjerne en task fra TodoScreen komponenten må man swipe til venstre på en task. Da vil en fin animasjon gi deg en “Done” knapp. For å få dette til brukte vi tredjeparts biblioteket react-native-swipeout. Biblioteket gjør det utrolig enkelt å ha swipeout animasjoner med et ulikt antall knapper.
 
 For å installere:
- ‘’’
+```
 npm install --save react-native-swipeout
+```
 
-‘’’
 For å bruke det:
-‘’’
+```javascript
 import Swipeout from 'react-native-swipeout';
-
 // Buttons
 var swipeoutBtns = [
   {
@@ -75,17 +74,16 @@ var swipeoutBtns = [
     <Text>Swipe me left</Text>
   </View>
 </Swipeout>
-
+```
 Stylingen endrer du i objektet swipeoutBtns. For å se props til komponenten sjekk ut https://github.com/dancormier/react-native-swipeout
 
 ### ProgressCircle
 Skriv følgende for å inkludere komponenten og rendre den. Props’ene i eksempelet må være med for at den skal rendres. Husk å kjør npm install etter importen. 
-
+```javascript
 import React from 'react'
 import { ProgressCircle }  from 'react-native-svg-charts'
 
 class ProgressCircleExample extends React.PureComponent {
-
     render() {
         return (
             <ProgressCircle
@@ -96,33 +94,37 @@ class ProgressCircleExample extends React.PureComponent {
         )
     }
 }
-
+```
 ### Pedometer
 En komponent som er hentet fra Expo SDK’en og er ekstremt lett å bruke. Følgende kode må implementers:
 
 Først importer:
+```javascript
 import Expo from "expo";
 import { Pedometer } from "expo";
-
+```
 Derretter må state settes i komponenten din:
+```
   state = {
     currentStepCount: 0
   };
-
+```
 For å legge til en ‘lytter’ på mobilens pedometer, implementer:
-
+```javascript
 this._subscription = Pedometer.watchStepCount(result => {
       this.setState({
         currentStepCount: result.steps
       });
     });
-    
+```
 Merk: Denne vil endre state slik at den oppdateres hver gang det skjer et nytt skritt! Implementer gjerne i didMount-metoden til komponenten
 
 Man vil også kunne avlutte ‘lytteren’ når komponenten rived ned. Implementer i willUnmount.
-    this._subscription && this._subscription.remove();
-    this._subscription = null;
-    
+```javascript
+this._subscription && this._subscription.remove();
+this._subscription = null;
+```
+
 Det finnes også metoder for å laste skritt asynkront fra andre tidsperioder, og for å sjekke om pedometer i det hele tatt er tilgjengelig. Sjekk koden vår for en mer detaljert implementasjon.
 Kommentarer i koden viser godt hvordan det fungerer.
 
@@ -134,7 +136,7 @@ Async storage er react native sitt api for å lagre data på device. Apiet er as
 
 Hvordan bruker du async storage?
 Lagring av data på key:
-‘’’
+```javascript
 _storeData = async (data,myKey) => {
   try {
     await AsyncStorage.setItem('myKey', 'data');
@@ -142,9 +144,9 @@ _storeData = async (data,myKey) => {
     // Error saving data
   }
 }
-‘’’
+```
 Fetche data:
-‘’’
+```javascript
 _retrieveData = async (myKey) => {
   try {
     const value = await AsyncStorage.getItem(myKey');
@@ -156,22 +158,23 @@ _retrieveData = async (myKey) => {
      // Error retrieving data
    }
 }
-‘’’
+```
 
 Da har du alt du trenger for å kunne bevare dataen din mellom applikasjons “økter”!
 
 ### Expo
 Expo er verktøyet som lar deg komme fort igang med utviklingen av react native applikasjoner. For å komme igang må du først laste ned NodeJs. For å installere expo:
-‘’’
+```
 npm install expo-cli --global
-‘’’
-<br>
+```
+
 For å lage ditt første prosjekt:
-‘’’
+```
 expo init my-new-project
 cd my-new-project
 expo start
-‘’’
+```
+
 Da skal verktøyet til expo være oppe og kjøre i nettlesern din. Dersom det ikkje er dette kan du skrive inn addressen localhost:19002 i nettlesern din.
 
 ## Testing
