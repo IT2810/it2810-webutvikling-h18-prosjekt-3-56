@@ -82,10 +82,13 @@ const styles = StyleSheet.create(
     ,
     setup:{
       fontSize:35,
+      textAlign:'center'
+
     },
     punch:{
       fontSize:45,
       color:'#f39c12',
+      textAlign:'center'
     },
     textShadow: Platform.OS === 'ios' ?
     {
@@ -94,11 +97,17 @@ const styles = StyleSheet.create(
       shadowColor: '#000',
       shadowOffset: { width: 2, height: 1 },
       shadowOpacity: 0.8,
-      shadowRadius:4,  
-      textAlign:'center' 
-    } : 
+      shadowRadius:4,
+      textAlign:'center'
+
+    } :
     {
-      elevation: 2
+      elevation: 2,
+      borderColor:"#bbb",
+      borderWidth:2,
+      textAlign:'center',
+      margin: 3,
+
      }
   }
 )
