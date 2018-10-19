@@ -4,6 +4,7 @@ import {Pedometer} from 'expo';
 import {ProgressCircle }  from 'react-native-svg-charts';
 import {Foundation} from '@expo/vector-icons';
 import Dimensions from 'Dimensions';
+import {isPositiveInteger as validateInput} from '../util/util.js';
 
 export default class MotivatingPedometer extends Component{
 
@@ -48,9 +49,12 @@ export default class MotivatingPedometer extends Component{
 		this._subscription = null;
 	}
 
-	validateInput = text => {
-		isNaN(text) ? Alert.alert("Error", "Please type a number") : this.setState({stepGoal: text})
-	};
+	trySetState = text => validateInput(text) ?
+		this.setState({
+			stepGoal: text
+		}) :
+		Alert.alert('Please type a valid number') 
+
 
 	render(){
 		return (
@@ -64,14 +68,12 @@ export default class MotivatingPedometer extends Component{
 				</View>
 				<View style={styles.overlapper}>
 					<View style={styles.innerRight}>
-						<View style = {styles.wrap}>
-							<Text style = {{fontWeight: '400', fontSize: this.textSize,textAlign:'center'}}>{parseInt(this.state.currentStepCount) + " /"}</Text>
-							<TextInput
-							style={{fontWeight: '400', fontSize: this.textSize, textAlign:'center'}}
-							placeholder= "1000"
-							onSubmitEditing={(event) => this.validateInput(event.nativeEvent.text)}
-							/>
-						</View>
+						<Text style = {{fontWeight: '400', fontSize: this.textSize}}>   {this.state.currentStepCount + " /"}</Text>
+						<TextInput
+						style={{fontWeight: '400', fontSize: this.textSize}}
+						placeholder= "1000"
+						onSubmitEditing={(event) => this.trySetState(event.nativeEvent.text)}
+						/>
 					</View>
 					<View style={styles.innerLeft}>
 						<Foundation name = 'foot' size = {this.footSize} />
