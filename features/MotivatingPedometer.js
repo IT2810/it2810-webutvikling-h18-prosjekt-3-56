@@ -65,11 +65,9 @@ export default class MotivatingPedometer extends Component{
 				<View style={styles.overlapper}>
 					<View style={styles.innerRight}>
 						<View style = {styles.wrap}>
-							<Text style = {{fontWeight: '400', fontSize: this.textSize, borderColor:'black',
-								 borderWidth:2, textAlign:'center'}}>   {this.state.currentStepCount + " /"}</Text>
+							<Text style = {{fontWeight: '400', fontSize: this.textSize,textAlign:'center'}}>{parseInt(this.state.currentStepCount) + " /"}</Text>
 							<TextInput
-							style={{fontWeight: '400', fontSize: this.textSize, borderColor:'black',
-								 borderWidth:2, textAlign:'center'}}
+							style={{fontWeight: '400', fontSize: this.textSize, textAlign:'center'}}
 							placeholder= "1000"
 							onSubmitEditing={(event) => this.validateInput(event.nativeEvent.text)}
 							/>
@@ -106,9 +104,6 @@ const styles = StyleSheet.create({
 		zIndex: 1,
 		width: "100%",
 		height: "90%",
-
-		borderBottomColor:'black',
-		borderWidth:2
 	},
 	wrap:{
 		flexDirection:"column",
@@ -118,8 +113,6 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 		height: "40%",
 		width: "100%",
-		borderColor:'black',
-	 	borderWidth:2,
 		marginBottom:"3%"
 	},
 	innerLeft: {
