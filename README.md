@@ -10,8 +10,8 @@ Består tre skjermer man kan navigere mellom ved hjelp av tabs: en hjemskjerm, e
 Nederste del av skjermen består av en uthevet boks som kan trykkes på. Den første( og sorte) teksten er en intro til en vits. Ved klikk kommer avslutningen på vitsen. Denne teksten er gul. Ved nytt klikk genereres en ny vits og slik fortsetter det til man spyr av vitser. Dette gir deg virkelig motivasjonen og gleden du trenger for å komme deg gjennom en hektisk hverdag!
 
 ### Todo tab
-¤¤Bilder av Todo¤¤
 Dette er en skjerm som skal reflektere en todo-liste fra den virkelige verdenen. Her kan man legge til tasks øverst. Man kan også fjerne taske ved å swipe tasks mot venstre. Todos blir selvfølgelig lagret mellom hver gang man lukker og åpner appli
+![Alt text](./assets/images/TODO.png?raw=true "Todo") ![Alt text](./assets/images/Home.png?raw=true "Todo")
 
 ## Grunnlag for våre løsninger
 Appen vår er i bunn å grunn bygget videre på eksempel-applikasjonen som Expo setter i gang etter kommandoen “expo-init”. Dette synes mest i tabsene og navigerings-logikken mellom de ulike skjermene. Vi valgte denne løsningen fordi det reflekterte vår skisserte løsning bra. Tabsene gir bra intuisjon om hvordan man kan navigere mellom skjermene.
@@ -22,7 +22,8 @@ Komponentene på skjermene er i stor grad designet av oss uten mye avhengighet a
 
 Vi valgte å lage en joke komponent. Dette gjorde vi fordi vi syntes det var gøy, men samtidig for å poengtere motivasjons-aspektet ved applikasjonen. I Joke komponenten vår har vi brukt fetchAPI for å hente data fra det åpne apiet "official joke api". Vi valgte å brukte fetchAPI fordi det gir deg en interface som er utrolig enkel å bruke og vi synes den gir en veldig intuitiv og logisk måte å fetche ressursers asynkront.
 
-Skritteller-komponenten ble valgt for å demonstrere implementasjon av kravene om å vise “noe som er utover basic React Native UI-problematikk”. Den demonstrerer også bruk av Async storage. Komponenten består av sub-komponenten “ProgressCircle” fra “react-native-svg-charts”-biblioteket (“progressbar”-en som rendres) og en Pedometer-komponent som er hentet fra Expo-apiet. Denne gir oss tilgang til mobilens skritteller  og asynkrone lagre-og hentemetoder.
+Skritteller-komponenten ble valgt for å demonstrere implementasjon av kravene om å vise “noe som er utover basic React Native UI-problematikk”. Den demonstrerer også bruk av Async storage. Komponenten består av sub-komponenten “ProgressCircle” fra “react-native-svg-charts”-biblioteket (“progressbar”-en som rendres) og en Pedometer-komponent som er hentet fra Expo-apiet. Denne gir oss tilgang til mobilens skritteller  og asynkrone lagre-og hentemetoder. 
+Se nederst i dokumentet for kommentarer på funskponalitet på skrittelleren vår
 
 Todo-komponenten skal demonstrere oppfølging av kravene om å kunne legge til/fjerne elementer og lagre dem asynkront. Vi valgte dette fordi det er intuitivt, men samtidig virket det gøy og overkommelig å gjennomføre. Komponenten består av komponentene AddTask og ScrollView. Scrollview kan ha flere Task komponenter som children. Scrollview er en komponent som kommer med react native og gjør det utrolig enkelt å ha en “scrollbar” liste i mobilapplikasjonen din. Det eneste man trenger å gjøre er å legge en liste med komponenter inne i den og så ordner den resten. Vi har også hentet inn Swipeout-komponenten fra ‘react-native-swipout’-biblioteket for å implementere fjerning av tasks. Dette oppsummerer egentlig hvordan vi legger til og fjerner elementer (tasks).
 
@@ -178,11 +179,15 @@ expo start
 Da skal verktøyet til expo være oppe og kjøre i nettlesern din. Dersom det ikkje er dette kan du skrive inn addressen localhost:19002 i nettlesern din.
 
 ## Testing
-Under utviklingen har vi testet applikasjonen på både ios og android. Henholdvis en Iphone Xs, LG Nexus 5X og en Samsung Galaxy Note 3. Sørget for at brukergrensesnittet var responsivt og at applikasjonen fungerte på begge operativsystem. 
+Under utviklingen har vi testet applikasjonen på både ios og android. Henholdvis en iPhone Xs, iPhone 5, LG Nexus 5X og en Samsung Galaxy Note 3. Sørget for at brukergrensesnittet var responsivt og at applikasjonen fungerte på begge operativsystem. 
 
 Testing av koden har foregått ved hjelp av Jest. Mesteparten av testene våre er snapshot tester, ettersom det det var svært få enhetstester vi kunne utføre. Vi hadde to funksjoner som kunne enhetstestes, resten forandret på state og var ikkje mulig å bryte opp i mindre testbare deler. 
 
-### Ettertanker
+### Ettertanker/Kommentarer
 Innsåg i etterkant at lagringen til async storage ikkje blir brukt optimalt. Slik som det er nå så lagres dataen hver gang en ny task bli lagt til eller fjernet. Dette er kostbart! Dersom vi skulle fullført denne prototypen ville vi flyttet lagringen til componentWillUnmount() i TodoScreen komponenten. Grunnen til at dette har skjedd er nok at vi ikke hadde en god nok forståelse av react sin lifecycle i starten av prosjektet.
 
 Som det står over ville vi også gitt task komponenten bedre affordance. Slik det er nå er det vanskelig å vite at man skal swipe komponenten for å bli ferdig med en task. 
+
+Vi er også klar over at skritteller-komponentens funskjonalitet ikke alltid er tilstede. Etter å ha snakket med andre grupper fant vi ut at vi ikke er det eneste med dette problemet. Det har seg slik at ved mounting vil MotivatingPedometer prøve å hente data (tidligere skritt) fra et api som har tilgang mobilens skritteller-program(helse viss ios, googleFit viss android). Dette api har vist seg å være svært upolitelig når prosjektet buildes i expo gjentatte ganger. Men det har fungert til tider og vi etter sammenlikning med andre studenter og oguider på nett, er overbevist om at koden vår er riktig.
+Når den ikke klarer å komunisere via api-et vil skrittelleren ha en default-startverdi på 100 skritt.
+
