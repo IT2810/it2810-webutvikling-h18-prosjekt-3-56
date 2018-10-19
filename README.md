@@ -2,7 +2,7 @@
 Boost er en applikasjon som skal gjøre brukerens hverdag enklere. Applikasjonen er delt i tre, en del for å gi deg motivasjon, en for å gi deg glede og en for å ta kontroll over hverdagen din.
 
 ## App’en vår
-Består tre skjermer man kan navigere mellom ved hjelp av tabs: en hjemskjerm, en todo-skjerm og en setting-skjerm. De to første er utstyrt med komponenter og funksjonalitet. Den siste er tatt med fordi det rett og slett følger material design med tre tabs/skjermer å navigere mellom. Den er tom fordi de to andre skjermene tilfredsstiller funksjonalitet- og teknologi kravene som oppgaven stiller. Det var heller aldri vårt mål å lage noe mer enn en prototype eller demonstrere noe utover det oppgaveteksten beskrev.
+Består av tre skjermer man kan navigere mellom ved hjelp av tabs: en hjemskjerm, en todo-skjerm og en setting-skjerm. De to første er utstyrt med komponenter og funksjonalitet. Den siste er tatt med fordi det rett og slett følger material design med tre tabs/skjermer å navigere mellom. Den er tom fordi de to andre skjermene tilfredsstiller funksjonalitet- og teknologi kravene som oppgaven stiller. Det var heller aldri vårt mål å lage noe mer enn en prototype eller demonstrere noe utover det oppgaveteksten beskrev.
 
 ### Home tab
 Øverste del av skjermen består av en skritteller. Denne holder styr på skrittene du har gått siden midnatt samme dag i en teller under føttene. Tallet før skråstreken er skrittene du har tatt. Tallet etter skråstreken kan man endre på ved klikk og brukerinput. Dette setter målet ditt for dagen. Sirkelen rundt er ‘progress-bar’ som viser visuelt hvor mange skritt du har tatt i forhold til målet.
@@ -10,23 +10,23 @@ Består tre skjermer man kan navigere mellom ved hjelp av tabs: en hjemskjerm, e
 Nederste del av skjermen består av en uthevet boks som kan trykkes på. Den første( og sorte) teksten er en intro til en vits. Ved klikk kommer avslutningen på vitsen. Denne teksten er gul. Ved nytt klikk genereres en ny vits og slik fortsetter det til man spyr av vitser. Dette gir deg virkelig motivasjonen og gleden du trenger for å komme deg gjennom en hektisk hverdag!
 
 ### Todo tab
-Dette er en skjerm som skal reflektere en todo-liste fra den virkelige verdenen. Her kan man legge til tasks øverst. Man kan også fjerne taske ved å swipe tasks mot venstre. Todos blir selvfølgelig lagret mellom hver gang man lukker og åpner appli
+Dette er en skjerm som skal reflektere en todo-liste fra den virkelige verdenen. Her kan man legge til tasks øverst. Man kan også fjerne taske ved å swipe tasks mot venstre. Todos blir selvfølgelig lagret mellom hver gang man lukker og åpner applikasjonen. Under ser man hvordan applikasjonen ser ut på en iPhone Xs.
 <img src="./assets/images/TODO.png" width="256" height="450" title="Todo">
 <img src="./assets/images/Home.png" width="256" height="450" title="Home">
 
 ## Grunnlag for våre løsninger
-Appen vår er i bunn å grunn bygget videre på eksempel-applikasjonen som Expo setter i gang etter kommandoen “expo-init”. Dette synes mest i tabsene og navigerings-logikken mellom de ulike skjermene. Vi valgte denne løsningen fordi det reflekterte vår skisserte løsning bra. Tabsene gir bra intuisjon om hvordan man kan navigere mellom skjermene.
+Appen vår er i bunn å grunn bygget videre på eksempel-applikasjonen som Expo setter i gang etter kommandoen “expo-init”. Dette synes mest i tabsene og navigerings-logikken mellom de ulike skjermene. Vi valgte denne løsningen fordi det reflekterte vår skisserte løsning bra. Tabsene skaper en fin intuisjon om hvordan man kan navigere mellom skjermene.
 
 Vi vil gjerne understreke at dette ikke betyr at vi blindt har stolt på det expo tilbyr av ferdig funksjonalitet, men at vi har brukt god tid til å forstå utvikler-miljøet som tilbys her. For eksempel lagde et issue for å fjerne/rydde all kode og funksjonalitet som vi så var unødvendig for vår applikasjon. Dette krevde at vi satt oss inn det som stod der, noe som gav oss en god forståelse over verktøyet vi ble tilbudt. 
 
 Komponentene på skjermene er i stor grad designet av oss uten mye avhengighet av eksterne biblioteker og api’er. Utenom komponentene fra ‘react-native-naviation’-api’et er det kun på laveste nivå i komponent-hierarkiet hvor vi har brukt tredjeparts komponenter. Dette gjorde vi fordi det gav oss mye frihet til implementasjon og samtidig få oppfylt kravene som ble stilt. 
 
-Vi valgte å lage en joke komponent. Dette gjorde vi fordi vi syntes det var gøy, men samtidig for å poengtere motivasjons-aspektet ved applikasjonen. I Joke komponenten vår har vi brukt fetchAPI for å hente data fra det åpne apiet "official joke api". Vi valgte å brukte fetchAPI fordi det gir deg en interface som er utrolig enkel å bruke og vi synes den gir en veldig intuitiv og logisk måte å fetche ressursers asynkront.
+Vi valgte å lage en joke-komponent. Dette gjorde vi fordi vi syntes det var gøy, men samtidig for å poengtere motivasjons-aspektet ved applikasjonen. I Joke-komponenten vår har vi brukt fetchAPI for å hente data fra det åpne apiet "official joke api". Vi valgte å brukte fetchAPI fordi det gir deg et interface som er utrolig enkelt å bruke og vi synes den gir en veldig intuitiv og logisk måte å fetche ressurser asynkront.
 
 Skritteller-komponenten ble valgt for å demonstrere implementasjon av kravene om å vise “noe som er utover basic React Native UI-problematikk”. Den demonstrerer også bruk av Async storage. Komponenten består av sub-komponenten “ProgressCircle” fra “react-native-svg-charts”-biblioteket (“progressbar”-en som rendres) og en Pedometer-komponent som er hentet fra Expo-apiet. Denne gir oss tilgang til mobilens skritteller  og asynkrone lagre-og hentemetoder. 
-Se nederst i dokumentet for kommentarer på funskponalitet på skrittelleren vår
+Se nederst i dokumentet for kommentarer på funskponalitet på skrittelleren vår.
 
-Todo-komponenten skal demonstrere oppfølging av kravene om å kunne legge til/fjerne elementer og lagre dem asynkront. Vi valgte dette fordi det er intuitivt, men samtidig virket det gøy og overkommelig å gjennomføre. Komponenten består av komponentene AddTask og ScrollView. Scrollview kan ha flere Task komponenter som children. Scrollview er en komponent som kommer med react native og gjør det utrolig enkelt å ha en “scrollbar” liste i mobilapplikasjonen din. Det eneste man trenger å gjøre er å legge en liste med komponenter inne i den og så ordner den resten. Vi har også hentet inn Swipeout-komponenten fra ‘react-native-swipout’-biblioteket for å implementere fjerning av tasks. Dette oppsummerer egentlig hvordan vi legger til og fjerner elementer (tasks).
+Todo-komponenten skal demonstrere oppfølging av kravene om å kunne legge til/fjerne elementer og lagre/hente dem asynkront. Vi valgte dette fordi det er intuitivt, men samtidig virket det gøy og overkommelig å gjennomføre. Komponenten består av komponentene AddTask og ScrollView. Scrollview kan ha flere Task komponenter som children. Scrollview er en komponent som kommer med react native og gjør det utrolig enkelt å ha en “scrollbar”-liste i mobilapplikasjonen din. Det eneste man trenger å gjøre er å legge en liste med komponenter inne i den og så ordner den resten. Vi har også hentet inn Swipeout-komponenten fra ‘react-native-swipout’-biblioteket for å implementere fjerning av tasks. Dette oppsummerer egentlig hvordan vi legger til og fjerner elementer (tasks).
 
 Etter vi ble ferdig med todo komponenten innsåg vi at det var noen forbedringer vi kunne gjort. For eksempel kunne task komponenten vært en funksjonell komponent, ettersom den har ingen state. I tillegg innser vi at det er vanskelig å forstå at man skal swipe en task til venstre for å bli ferdig med den. Men ettersom dette er en prototype lar vi dette stå.
 
@@ -141,7 +141,7 @@ Lagring av data på key:
 ```javascript
 _storeData = async (data,myKey) => {
   try {
-    await AsyncStorage.setItem('myKey', 'data');
+    await AsyncStorage.setItem('myKey', 'data')
   } catch (error) {
     // Error saving data
   }
