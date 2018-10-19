@@ -5,10 +5,13 @@ import Joke from '../components/Joke.js';
 
 export default class HomeScreen extends React.Component {
 
-  static navigationOptions = {  // Display options for this screen. Used by the navigator that renders it
+// Display options for this screen. Used by the navigator that renders it
+  static navigationOptions = {
     title: 'Home'
   };
 
+/*This screen will render two components that gets 50% of the screen each
+because bothe have the flex:1 property*/
   render() {
     return (
       <View style={styles.container}>

@@ -11,11 +11,11 @@ export default class TabBarIcon extends React.Component {
     color: this.props.focused ? Colors.tabIconSelected : Colors.tabIconDefault
     })
 
-  icon = () => {
+  icon = () => {  // returns the appropriate icon to render
     const e = React.createElement;
     const {type} = this.props
     if (type === 'Ionicons'){
-      return e(Ionicons, this.createProps());
+      return e(Ionicons, this.createProps());  // returns a react node with props from above
     }
     else if (type === 'FontAwesome'){
       return e(FontAwesome, this.createProps());
