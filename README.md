@@ -1,10 +1,9 @@
 # Boost
 Boost er en applikasjon som skal gjøre brukerens hverdag enklere. Applikasjonen er delt i tre, en del for å gi deg motivasjon, en for å gi deg glede og en for å ta kontroll over hverdagen din.
-<br>
 
 ## App’en vår
 Består tre skjermer man kan navigere mellom ved hjelp av tabs: en hjemskjerm, en todo-skjerm og en setting-skjerm. De to første er utstyrt med komponenter og funksjonalitet. Den siste er tatt med fordi det rett og slett følger material design med tre tabs/skjermer å navigere mellom. Den er tom fordi de to andre skjermene tilfredsstiller funksjonalitet- og teknologi kravene som oppgaven stiller. Det var heller aldri vårt mål å lage noe mer enn en prototype eller demonstrere noe utover det oppgaveteksten beskrev.
-<br>
+
 ### Home tab
 Øverste del av skjermen består av en skritteller. Denne holder styr på skrittene du har gått siden midnatt samme dag i en teller under føttene. Tallet før skråstreken er skrittene du har tatt. Tallet etter skråstreken kan man endre på ved klikk og brukerinput. Dette setter målet ditt for dagen. Sirkelen rundt er ‘progress-bar’ som viser visuelt hvor mange skritt du har tatt i forhold til målet.
 <br>
