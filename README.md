@@ -1,4 +1,5 @@
 #Boost
+<br>
 Boost er en applikasjon som skal gjøre brukerens hverdag enklere. Applikasjonen er delt i tre, en del for å gi deg motivasjon, en for å gi deg glede og en for å ta kontroll over hverdagen din.
 <br>
 ## App’en vår
