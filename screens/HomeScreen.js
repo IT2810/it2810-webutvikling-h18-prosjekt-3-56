@@ -1,6 +1,6 @@
 import React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
-import Pedometer from '../features/MotivatingPedometer.js';
+import Pedometer from '../components/MotivatingPedometer.js';
 import Joke from '../components/Joke.js';
 
 export default class HomeScreen extends React.Component {
@@ -15,10 +15,8 @@ because bothe have the flex:1 property*/
   render() {
     return (
       <View style={styles.container}>
-        <Pedometer />  {/*first half of screen*/ }
-        <View style = {{flex:1}}>  {/*Second half*/}
-          <Joke/>
-        </View>
+        <Pedometer/>
+        <Joke/>
       </View>
     );
   }

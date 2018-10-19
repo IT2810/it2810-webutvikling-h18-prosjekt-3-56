@@ -6,19 +6,15 @@ import {Foundation} from '@expo/vector-icons';
 import Dimensions from 'Dimensions';
 import {isPositiveInteger as validateInput} from '../util/util.js';
 
-
-// A component that renders the entire layout af the pedometer
-// Used on 50% on the home screen
 export default class MotivatingPedometer extends Component{
 
-	state = {  // just some initial values. Arent actually used.
+	state = {
 		stepGoal: 1000,
 		currentStepCount: 100,
 	};
 
 	componentDidMount() {
 		this._subscribe();
-		// sizes for icon and text that should be used based on screen size
 		this.footSize = Dimensions.get('window').height > 700 ? 100 : 50;
 		this.textSize = Dimensions.get('window').height > 700 ? 35 : 25;
 	};
@@ -28,31 +24,27 @@ export default class MotivatingPedometer extends Component{
 		this._unsubscribe();
 	};
 
-	_subscribe = () => {  // Adds a subscription for listening on steps taken
+	_subscribe = () => {
 		this._subscription = Pedometer.watchStepCount(result => {
 			this.setState({
 				currentStepCount: result.steps
 			});
 		});
-		//Steps are automaticly Async downloaded with this subscription. Keeps count for last seven days
 
-		// Retrives (Async) steps taken since midnight the same day.
-		const start = new Date();
-		const end = new Date();
-		start.setHours(0,0,0);
-		Pedometer.getStepCountAsync(start, end).then(
+		Pedometer.getStepCountAsync(new Date().setHours(0,0,0), new Date()).then(
 			result => {
 				this.setState({ currentStepCount: result.steps });
 			},
 			error => {
+				console.log(error);
 				this.setState({
 					 currentStepCount: 100
 				});
 			}
-		); 
-	}; 
-	
-	_unsubscribe = () => {  // ends the subscription
+		);
+	};
+
+	_unsubscribe = () => {
 		this._subscription && this._subscription.remove();
 		this._subscription = null;
 	}
@@ -115,22 +107,27 @@ const styles = StyleSheet.create({
 		width: "100%",
 		height: "90%",
 	},
+	wrap:{
+		flexDirection:"column",
+	},
 	innerRight: {
 		alignItems: "center",
 		justifyContent: "center",
 		height: "40%",
-		width: "40%",
+		width: "100%",
+		marginBottom:"3%"
 	},
 	innerLeft: {
 		flexDirection: "row",
 		height: '45%',
-		width: '32%',
+		width: '100%',
 		justifyContent: "center",
+
 	},
 	rightContent: {
 		fontSize: 35,
 		fontWeight: "400",
-	}, 
+	},
 	rightFoot: {
 		marginLeft: 10,
 		marginTop:40,

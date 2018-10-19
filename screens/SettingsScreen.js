@@ -9,7 +9,7 @@ export default class SettingsScreen extends React.Component {
   render() {
     return <View style = {styles.container}>
       <Text>This is the third settings screen. It is not implemented in
-      this prototype. 
+      this prototype.
       </Text>
     </View>
   }
@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     flex: 1,
+    textAlign:'center',
     backgroundColor: '#fff',
   },
 });

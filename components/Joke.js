@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
+import {Platform, Text, View, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
+import Dimensions from 'Dimensions';
 
 
 export default class Joke extends Component {
@@ -15,6 +16,8 @@ export default class Joke extends Component {
     this.clickBox = this.clickBox.bind(this);
   }
 
+  shouldShrink = () => Dimensions.get('window').height < 700
+
   //Fetches a first joke
   componentDidMount(){
     this.fetchJoke();
@@ -26,8 +29,8 @@ export default class Joke extends Component {
       <TouchableOpacity activeOpacity = {1} style = {styles.topac} onPress = {this.clickBox}>
         {
           this.state.status
-          ? <Text style = {styles.punch}>{this.state.punchline}</Text>
-          : <Text style = {styles.setup}>{this.state.setup}</Text>
+          ? <Text style = {[styles.textShadow, styles.punch, this.shouldShrink() ? {fontSize: 35} : {}]}>{this.state.punchline}</Text>
+          : <Text style = {[styles.textShadow, styles.setup,  this.shouldShrink() ? {fontSize: 25} : {}]}>{this.state.setup}</Text>
         }
       </TouchableOpacity>
     );
@@ -54,7 +57,6 @@ export default class Joke extends Component {
     let joke = fetch("https://08ad1pao69.execute-api.us-east-1.amazonaws.com/dev/random_joke")
     .then(function(response){
       if(response.status == "200"){
-        console.log(typeof response);
         return response.json();
       }
       else{
@@ -73,31 +75,42 @@ export default class Joke extends Component {
 
 const styles = StyleSheet.create(
   {
-
     topac:{
       flex:1,
-      shadowColor: 'rgba(0,0,0, .4)', // IOS
-      shadowOffset: { height: 1, width: 1 }, // IOS
-      shadowOpacity: 1, // IOS
-      shadowRadius: 1, //IOS
-
-      elevation: 2, // Android
       justifyContent: 'center',
-
       flexDirection: 'column',
-
       borderBottomColor:'black',
       borderBottomWidth: StyleSheet.hairlineWidth,
-    },
+      }
+    ,
     setup:{
       fontSize:35,
       textAlign:'center'
+
     },
     punch:{
       fontSize:45,
       color:'#f39c12',
       textAlign:'center'
+    },
+    textShadow: Platform.OS === 'ios' ?
+    {
+      margin: 3,
+      backgroundColor: 'white',
+      shadowColor: '#000',
+      shadowOffset: { width: 2, height: 1 },
+      shadowOpacity: 0.8,
+      shadowRadius:4,
+      textAlign:'center'
 
-    }
+    } :
+    {
+      elevation: 2,
+      borderColor:"#bbb",
+      borderWidth:2,
+      textAlign:'center',
+      margin: 3,
+
+     }
   }
 )
