@@ -39,9 +39,9 @@ export default class MotivatingPedometer extends Component{
 					 currentStepCount: 100
 				});
 			}
-		); 
-	}; 
-	
+		);
+	};
+
 	_unsubscribe = () => {
 		this._subscription && this._subscription.remove();
 		this._subscription = null;
@@ -106,18 +106,19 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 		justifyContent: "center",
 		height: "40%",
-		width: "40%",
+		width: "100%",
 	},
 	innerLeft: {
 		flexDirection: "row",
 		height: '45%',
-		width: '32%',
+		width: '100%',
 		justifyContent: "center",
+		marginBottom:20
 	},
 	rightContent: {
 		fontSize: 35,
 		fontWeight: "400",
-	}, 
+	},
 	rightFoot: {
 		marginLeft: 10,
 		marginTop:40,

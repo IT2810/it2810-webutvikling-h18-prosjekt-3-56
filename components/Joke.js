@@ -54,7 +54,6 @@ export default class Joke extends Component {
     let joke = fetch("https://08ad1pao69.execute-api.us-east-1.amazonaws.com/dev/random_joke")
     .then(function(response){
       if(response.status == "200"){
-        console.log(typeof response);
         return response.json();
       }
       else{
@@ -76,18 +75,18 @@ const styles = StyleSheet.create(
 
     topac:{
       flex:1,
-      shadowColor: 'rgba(0,0,0, .4)', // IOS
-      shadowOffset: { height: 1, width: 1 }, // IOS
-      shadowOpacity: 1, // IOS
-      shadowRadius: 1, //IOS
+      shadowOffset:{  width: 10,  height: 10},
+      shadowColor: 'black',
+      shadowOpacity: 1.0,
 
       elevation: 2, // Android
       justifyContent: 'center',
 
       flexDirection: 'column',
-
+      margin:2,
       borderBottomColor:'black',
       borderBottomWidth: StyleSheet.hairlineWidth,
+
     },
     setup:{
       fontSize:35,

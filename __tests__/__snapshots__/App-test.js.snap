@@ -141,54 +141,182 @@ exports[`App snapshot renders the root without loading screen 1`] = `
                       style={
                         Object {
                           "flex": 1,
+                          "justifyContent": "center",
+                          "marginTop": "3%",
                         }
                       }
                     >
                       <View
-                        accessible={true}
-                        isTVSelectable={true}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
                         style={
                           Object {
-                            "borderBottomColor": "black",
-                            "borderBottomWidth": 0.5,
-                            "elevation": 2,
-                            "flex": 1,
-                            "flexDirection": "column",
-                            "justifyContent": "center",
-                            "opacity": 1,
-                            "shadowColor": "rgba(0,0,0, .4)",
-                            "shadowOffset": Object {
-                              "height": 1,
-                              "width": 1,
-                            },
-                            "shadowOpacity": 1,
-                            "shadowRadius": 1,
+                            "height": "100%",
+                            "marginHorizontal": "3%",
+                            "width": "94%",
                           }
                         }
                       >
-                        <Text
-                          accessible={true}
-                          allowFontScaling={true}
-                          ellipsizeMode="tail"
+                        <View
+                          onLayout={[Function]}
                           style={
-                            Array [
-                              Object {
-                                "fontSize": 35,
-                                "textAlign": "center",
-                              },
-                              Object {},
-                            ]
+                            Object {
+                              "height": "100%",
+                            }
+                          }
+                        />
+                      </View>
+                      <View
+                        style={
+                          Object {
+                            "alignItems": "center",
+                            "flexDirection": "column-reverse",
+                            "height": "90%",
+                            "position": "absolute",
+                            "width": "100%",
+                            "zIndex": 1,
+                          }
+                        }
+                      >
+                        <View
+                          style={
+                            Object {
+                              "alignItems": "center",
+                              "height": "40%",
+                              "justifyContent": "center",
+                              "width": "40%",
+                            }
                           }
                         >
-                          
-                        </Text>
+                          <Text
+                            accessible={true}
+                            allowFontScaling={true}
+                            ellipsizeMode="tail"
+                            style={
+                              Object {
+                                "fontSize": undefined,
+                                "fontWeight": "400",
+                              }
+                            }
+                          >
+                               
+                            100 /
+                          </Text>
+                          <TextInput
+                            allowFontScaling={true}
+                            onSubmitEditing={[Function]}
+                            placeholder="1000"
+                            style={
+                              Object {
+                                "fontSize": undefined,
+                                "fontWeight": "400",
+                              }
+                            }
+                          />
+                        </View>
+                        <View
+                          style={
+                            Object {
+                              "flexDirection": "row",
+                              "height": "45%",
+                              "justifyContent": "center",
+                              "width": "32%",
+                            }
+                          }
+                        >
+                          <Text
+                            accessible={true}
+                            allowFontScaling={false}
+                            ellipsizeMode="tail"
+                            style={
+                              Array [
+                                Object {
+                                  "color": undefined,
+                                  "fontSize": 12,
+                                },
+                                undefined,
+                                Object {
+                                  "fontFamily": "foundation",
+                                  "fontStyle": "normal",
+                                  "fontWeight": "normal",
+                                },
+                              ]
+                            }
+                          >
+                            
+                          </Text>
+                          <Text
+                            accessible={true}
+                            allowFontScaling={false}
+                            ellipsizeMode="tail"
+                            style={
+                              Array [
+                                Object {
+                                  "color": undefined,
+                                  "fontSize": 12,
+                                },
+                                Object {
+                                  "marginLeft": 10,
+                                  "marginTop": 40,
+                                  "transform": Array [
+                                    Object {
+                                      "scaleX": -1,
+                                    },
+                                  ],
+                                },
+                                Object {
+                                  "fontFamily": "foundation",
+                                  "fontStyle": "normal",
+                                  "fontWeight": "normal",
+                                },
+                              ]
+                            }
+                          >
+                            
+                          </Text>
+                        </View>
                       </View>
+                    </View>
+                    <View
+                      accessible={true}
+                      isTVSelectable={true}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        Object {
+                          "borderBottomColor": "black",
+                          "borderBottomWidth": 0.5,
+                          "elevation": 3,
+                          "flex": 1,
+                          "flexDirection": "column",
+                          "justifyContent": "center",
+                          "marginBottom": 2,
+                          "opacity": 1,
+                          "shadowColor": "rgba(0,0,0, .4)",
+                          "shadowOffset": Object {
+                            "height": 3,
+                            "width": 2,
+                          },
+                          "shadowOpacity": 1,
+                          "shadowRadius": 1,
+                        }
+                      }
+                    >
+                      <Text
+                        accessible={true}
+                        allowFontScaling={true}
+                        ellipsizeMode="tail"
+                        style={
+                          Object {
+                            "fontSize": 35,
+                            "textAlign": "center",
+                          }
+                        }
+                      >
+                        
+                      </Text>
                     </View>
                   </View>
                 </View>
@@ -317,7 +445,6 @@ exports[`App snapshot renders the root without loading screen 1`] = `
       }
     >
       <View
-        accessibilityLabel="Home"
         accessible={true}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -376,7 +503,7 @@ exports[`App snapshot renders the root without loading screen 1`] = `
               style={
                 Array [
                   Object {
-                    "color": "#2f95dc",
+                    "color": "#f1c40f",
                     "fontSize": 26,
                   },
                   Object {
@@ -436,13 +563,9 @@ exports[`App snapshot renders the root without loading screen 1`] = `
           accessible={true}
           allowFontScaling={true}
           ellipsizeMode="tail"
-          numberOfLines={1}
           style={
             Object {
-              "backgroundColor": "transparent",
-              "color": "#3478f6",
-              "fontSize": 11,
-              "marginBottom": 1.5,
+              "color": "#f1c40f",
               "textAlign": "center",
             }
           }
@@ -451,7 +574,6 @@ exports[`App snapshot renders the root without loading screen 1`] = `
         </Text>
       </View>
       <View
-        accessibilityLabel="Todo"
         accessible={true}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -510,7 +632,7 @@ exports[`App snapshot renders the root without loading screen 1`] = `
               style={
                 Array [
                   Object {
-                    "color": "#2f95dc",
+                    "color": "#f1c40f",
                     "fontSize": 26,
                   },
                   Object {
@@ -570,13 +692,9 @@ exports[`App snapshot renders the root without loading screen 1`] = `
           accessible={true}
           allowFontScaling={true}
           ellipsizeMode="tail"
-          numberOfLines={1}
           style={
             Object {
-              "backgroundColor": "transparent",
-              "color": "#929292",
-              "fontSize": 11,
-              "marginBottom": 1.5,
+              "color": "#ccc",
               "textAlign": "center",
             }
           }
@@ -585,7 +703,6 @@ exports[`App snapshot renders the root without loading screen 1`] = `
         </Text>
       </View>
       <View
-        accessibilityLabel="Settings"
         accessible={true}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -644,7 +761,7 @@ exports[`App snapshot renders the root without loading screen 1`] = `
               style={
                 Array [
                   Object {
-                    "color": "#2f95dc",
+                    "color": "#f1c40f",
                     "fontSize": 26,
                   },
                   Object {
@@ -704,13 +821,9 @@ exports[`App snapshot renders the root without loading screen 1`] = `
           accessible={true}
           allowFontScaling={true}
           ellipsizeMode="tail"
-          numberOfLines={1}
           style={
             Object {
-              "backgroundColor": "transparent",
-              "color": "#929292",
-              "fontSize": 11,
-              "marginBottom": 1.5,
+              "color": "#ccc",
               "textAlign": "center",
             }
           }
