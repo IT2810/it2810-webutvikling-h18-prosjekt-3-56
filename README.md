@@ -98,7 +98,7 @@ class ProgressCircleExample extends React.PureComponent {
 }
 ```
 ### Pedometer
-En komponent som er hentet fra Expo SDK’en og er ekstremt lett å bruke. Følgende kode må implementers:
+En komponent som er hentet fra Expo SDK’en og er ekstremt lett å bruke. Følgende kode må implementers i en React-komponent:
 
 Først importer:
 ```javascript
@@ -108,20 +108,20 @@ import { Pedometer } from "expo";
 Derretter må state settes i komponenten din:
 ```
   state = {
-    currentStepCount: 0
+    currentStepCount: 0  // Hvor mange skritt er gått
   };
 ```
 For å legge til en ‘lytter’ på mobilens pedometer, implementer:
 ```javascript
 this._subscription = Pedometer.watchStepCount(result => {
       this.setState({
-        currentStepCount: result.steps
+        currentStepCount: result.steps  // Merk at result har tellingen på hvor mange skritt som er gått hittil
       });
     });
 ```
-Merk: Denne vil endre state slik at den oppdateres hver gang det skjer et nytt skritt! Implementer gjerne i didMount-metoden til komponenten
+Merk: Denne vil endre state slik at den oppdateres hver gang det skjer et nytt skritt! Du bør implementere denne i didMount-metoden til komponenten. Så ved hvert nye skritt kan du f.eks rendre antall skritt som er gått.
 
-Man vil også kunne avlutte ‘lytteren’ når komponenten rived ned. Implementer i willUnmount.
+Man vil også kunne avslutte ‘lytteren’ når komponenten rived ned. Implementer i willUnmount:
 ```javascript
 this._subscription && this._subscription.remove();
 this._subscription = null;
