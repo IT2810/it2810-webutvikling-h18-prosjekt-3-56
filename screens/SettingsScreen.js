@@ -1,14 +1,25 @@
 import React from 'react';
-import { ExpoConfigView } from '@expo/samples';
+import { View, StyleSheet, Text } from 'react-native';
 
 export default class SettingsScreen extends React.Component {
   static navigationOptions = {
-    title: 'app.json',
+    title: 'Settings',
   };
 
   render() {
-    /* Go ahead and delete ExpoConfigView and replace it with your
-     * content, we just wanted to give you a quick view of your config */
-    return <ExpoConfigView />;
+    return <View style = {styles.container}>
+      <Text>This is the third settings screen. It is not implemented in
+      this prototype.
+      </Text>
+    </View>
   }
 }
+const styles = StyleSheet.create({
+  container: {
+    justifyContent: "center",
+    alignItems: "center",
+    flex: 1,
+    textAlign:'center',
+    backgroundColor: '#fff',
+  },
+});

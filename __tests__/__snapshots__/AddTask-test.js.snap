@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#f1c40f",
+      "display": "flex",
+      "flexDirection": "row",
+    }
+  }
+>
+  <TextInput
+    allowFontScaling={true}
+    onChangeText={[Function]}
+    placeHolder="The road to success is action."
+    style={
+      Object {
+        "flex": 0.8,
+        "fontSize": 20,
+        "height": 50,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    isTVSelectable={true}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "flex": 0.2,
+        "opacity": 1,
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "backgroundColor": "#f39c12",
+          "fontSize": 17,
+          "height": 50,
+          "paddingBottom": 14,
+          "paddingTop": 14,
+          "textAlign": "center",
+        }
+      }
+    >
+      ADD
+    </Text>
+  </View>
+</View>
+`;

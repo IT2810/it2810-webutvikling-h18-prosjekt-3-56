@@ -1,6 +1,6 @@
 import React from 'react';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
-import { AppLoading, Asset, Font, Icon } from 'expo';
+import { Platform, StatusBar, StyleSheet, View, AsyncStorage } from 'react-native';
+import { AppLoading, Asset } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
 
 export default class App extends React.Component {
@@ -8,48 +8,42 @@ export default class App extends React.Component {
     isLoadingComplete: false,
   };
 
-  render() {
+  render() {  // renders loading screen if app still loading
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
       return (
-        <AppLoading
+        <AppLoading  // (Very) Useful for caching assets thats required for the app to render
           startAsync={this._loadResourcesAsync}
           onError={this._handleLoadingError}
           onFinish={this._handleFinishLoading}
         />
       );
-    } else {
+    } else {  // App done loading and renders the actual application
       return (
         <View style={styles.container}>
           {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-          <AppNavigator />
+          <AppNavigator/>
         </View>
       );
     }
   }
 
+  /* Example on how we could download and load asyncronously
+   resources that are required at all times by the app. Like fonts, etc.*/
   _loadResourcesAsync = async () => {
-    return Promise.all([
-      Asset.loadAsync([
-        require('./assets/images/robot-dev.png'),
-        require('./assets/images/robot-prod.png'),
-      ]),
-      Font.loadAsync({
-        // This is the font that we are using for our tab bar
-        ...Icon.Ionicons.font,
-        // We include SpaceMono because we use it in HomeScreen.js. Feel free
-        // to remove this if you are not using it in your app
-        'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
-      }),
-    ]);
+    /*const asset = [
+      require('./assets/asset1.type'),
+      require('./assets/asset2.type'),
+    ];
+    const cacheAssets = Assets.map(asset => asset.fromModule(asset).downloadAsync());
+    return Promise.all(cacheAssets) */
   };
 
-  _handleLoadingError = error => {
-    // In this case, you might want to report the error to your error
-    // reporting service, for example Sentry
+  _handleLoadingError = error => {  // Called if the startAsync-prop returns an error
     console.warn(error);
+
   };
 
-  _handleFinishLoading = () => {
+  _handleFinishLoading = () => {  // Called after promise is resolved from _loadResourceAsync
     this.setState({ isLoadingComplete: true });
   };
 }
