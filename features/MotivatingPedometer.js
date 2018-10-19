@@ -35,6 +35,7 @@ export default class MotivatingPedometer extends Component{
 				this.setState({ currentStepCount: result.steps });
 			},
 			error => {
+				console.log(error);
 				this.setState({
 					 currentStepCount: 100
 				});

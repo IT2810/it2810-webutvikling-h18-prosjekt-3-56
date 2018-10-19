@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
+import {Platform, Text, View, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
 
 
 export default class Joke extends Component {
@@ -72,22 +72,30 @@ export default class Joke extends Component {
 
 const styles = StyleSheet.create(
   {
+    topac:
+      (Platform.OS === 'ios') ? {
+        flex:1,
+        shadowOffset:{  width: 10,  height: 10},
+        shadowColor: 'black',
+        shadowOpacity: 1.0,
+        justifyContent: 'center',
 
-    topac:{
-      flex:1,
-      shadowOffset:{  width: 10,  height: 10},
-      shadowColor: 'black',
-      shadowOpacity: 1.0,
+        flexDirection: 'column',
+        margin:2,
+        borderBottomColor:'black',
+        borderBottomWidth: StyleSheet.hairlineWidth,
+      } :
+      {
+        flex:1,
+        justifyContent: 'center',
 
-      elevation: 2, // Android
-      justifyContent: 'center',
-
-      flexDirection: 'column',
-      margin:2,
-      borderBottomColor:'black',
-      borderBottomWidth: StyleSheet.hairlineWidth,
-
-    },
+        flexDirection: 'column',
+        margin:2,
+        borderBottomColor:'black',
+        borderBottomWidth: StyleSheet.hairlineWidth,
+        elevation: 2, // Android
+      }
+    ,
     setup:{
       fontSize:35,
       textAlign:'center'
