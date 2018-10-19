@@ -11,7 +11,7 @@ Nederste del av skjermen består av en uthevet boks som kan trykkes på. Den fø
 
 ### Todo tab
 Dette er en skjerm som skal reflektere en todo-liste fra den virkelige verdenen. Her kan man legge til tasks øverst. Man kan også fjerne taske ved å swipe tasks mot venstre. Todos blir selvfølgelig lagret mellom hver gang man lukker og åpner appli
-![Alt text](./assets/images/TODO.png?raw=true "Todo" =100x20) ![Alt text](./assets/images/Home.png?raw=true "Todo" =100x20)
+![Alt text](./assets/images/TODO.png?raw=true "Todo" width=100x) ![Alt text](./assets/images/Home.png?raw=true "Todo" width=100x)
 
 ## Grunnlag for våre løsninger
 Appen vår er i bunn å grunn bygget videre på eksempel-applikasjonen som Expo setter i gang etter kommandoen “expo-init”. Dette synes mest i tabsene og navigerings-logikken mellom de ulike skjermene. Vi valgte denne løsningen fordi det reflekterte vår skisserte løsning bra. Tabsene gir bra intuisjon om hvordan man kan navigere mellom skjermene.
