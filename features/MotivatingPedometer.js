@@ -4,6 +4,7 @@ import {Pedometer} from 'expo';
 import {ProgressCircle }  from 'react-native-svg-charts';
 import {Foundation} from '@expo/vector-icons';
 import Dimensions from 'Dimensions';
+import {isPositiveInteger as validateInput} from '../util/util.js';
 
 
 // A component that renders the entire layout af the pedometer
@@ -56,8 +57,12 @@ export default class MotivatingPedometer extends Component{
 		this._subscription = null;
 	}
 
-	validateInput = text => Number(text) > 0  // is input a valid number?
-		? Alert.alert("Error", "Please type a valid number") : this.setState({stepGoal: text})
+	trySetState = text => validateInput(text) ?
+		this.setState({
+			stepGoal: text
+		}) :
+		Alert.alert('Please type a valid number') 
+
 
 	render(){
 		return (
@@ -75,8 +80,7 @@ export default class MotivatingPedometer extends Component{
 						<TextInput
 						style={{fontWeight: '400', fontSize: this.textSize}}
 						placeholder= "1000"
-						onSubmitEditing={(event) =>
-						this.validateInput(event.nativeEvent.text)}
+						onSubmitEditing={(event) => this.trySetState(event.nativeEvent.text)}
 						/>
 					</View>
 					<View style={styles.innerLeft}>
