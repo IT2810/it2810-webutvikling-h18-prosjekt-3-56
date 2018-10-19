@@ -8,7 +8,7 @@ export default class App extends React.Component {
     isLoadingComplete: false,
   };
 
-  render() {
+  render() {  // renders loading screen if app still loading
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
       return (
         <AppLoading  // (Very) Useful for caching assets thats required for the app to render
@@ -17,7 +17,7 @@ export default class App extends React.Component {
           onFinish={this._handleFinishLoading}
         />
       );
-    } else {
+    } else {  // App done loading and renders the actual application
       return (
         <View style={styles.container}>
           {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
@@ -27,7 +27,9 @@ export default class App extends React.Component {
     }
   }
 
-  _loadResourcesAsync = async () => {  // Burde vi implementere Async-storage her? Under er eksempel bruk
+  /* Example on how we could download and load asyncronously
+   resources that are required at all times by the app. Like fonts, etc.*/
+  _loadResourcesAsync = async () => {
     /*const asset = [
       require('./assets/asset1.type'),
       require('./assets/asset2.type'),
