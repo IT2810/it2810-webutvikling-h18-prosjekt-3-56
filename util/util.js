@@ -12,4 +12,5 @@ export function removeItem(id,list){
   }
 
 // Validates if the argument (string) is a positive integer
-export const isPostitveInteger = text => text >>> 0 === parseFloat(text)
+export const isPositiveInteger = text => text >>> 0 === parseFloat(text)
+
